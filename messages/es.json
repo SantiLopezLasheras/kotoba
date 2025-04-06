@@ -1,0 +1,14 @@
+{
+  "Home": {
+    "title": "Hola mundo!",
+    "about": "Visita la página de información"
+  },
+  "About": {
+    "title": "Información",
+    "description": "Esta es la página de información"
+  },
+  "NotFound": {
+    "title": "404 No encontrado",
+    "description": "La página que buscas no existe."
+  }
+}

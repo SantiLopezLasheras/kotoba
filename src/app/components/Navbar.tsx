@@ -1,3 +1,4 @@
+import LanguageToggler from "./language-toggle";
 import ThemeToggle from "./theme-toggle";
 
 export default function Navbar() {
@@ -6,6 +7,7 @@ export default function Navbar() {
       <div className="text-lg font-bold text-accent">KOTOBA</div>
 
       <div className="flex items-center space-x-4">
+        <LanguageToggler />
         <ThemeToggle />
       </div>
     </nav>
