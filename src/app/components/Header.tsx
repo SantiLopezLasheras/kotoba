@@ -4,8 +4,10 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import { LogOut, LogIn } from "lucide-react";
 
-export default function Header() {
+export default async function Header() {
   const { isAuthenticated } = getKindeServerSession();
+  const isUserAuthenticated = await isAuthenticated();
+  console.log("isAuthenticated", isUserAuthenticated);
 
   return (
     <nav className="flex justify-between items-center p-4 bg-bgPrimary">
@@ -14,7 +16,7 @@ export default function Header() {
       <div className="flex items-center space-x-4">
         <LanguageToggler />
         <ThemeToggle />
-        {isAuthenticated() ? (
+        {isUserAuthenticated ? (
           <LogoutLink
             postLogoutRedirectURL="/"
             className="text-accent rounded hover:bg-accent/90 hover:text-white transition"
