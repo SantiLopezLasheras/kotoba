@@ -3,7 +3,7 @@ import "../globals.css";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/Header";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
