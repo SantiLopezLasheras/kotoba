@@ -1,0 +1,14 @@
+{
+  "Home": {
+    "title": "Hola món!",
+    "about": "Vés a la pàgina d'informació"
+  },
+  "About": {
+    "title": "Sobre nosaltres",
+    "description": "Aquesta és la pàgina d'informació"
+  },
+  "NotFound": {
+    "title": "404 No trobat",
+    "description": "La pàgina que busques no existeix."
+  }
+}
