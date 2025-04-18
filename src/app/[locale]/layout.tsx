@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import "../globals.css";
-import { ThemeProvider } from "next-themes";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import Navbar from "../components/Navbar";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: "Kotoba",
@@ -29,13 +29,13 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body>
-        <NextIntlClientProvider>
-          <ThemeProvider attribute="class" enableSystem defaultTheme="system">
+        <Providers>
+          <NextIntlClientProvider>
             <Navbar />
             <main>{children}</main>
-          </ThemeProvider>
-          {/* <Footer /> */}
-        </NextIntlClientProvider>
+            {/* <Footer /> */}
+          </NextIntlClientProvider>
+        </Providers>
       </body>
     </html>
   );

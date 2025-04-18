@@ -19,9 +19,9 @@ const LanguageToggler = () => {
     <div className="relative">
       <button
         className="flex items-center justify-center p-2 bg-transparent border-none cursor-pointer"
-        onClick={() => setIsOpen(!isOpen)} // Toggle dropdown on click
+        onClick={() => setIsOpen(!isOpen)}
       >
-        <Languages size={24} />
+        <Languages size={24} strokeWidth={1.5} color="#f27220" />
       </button>
 
       {/* Dropdown para cambiar de idioma */}
