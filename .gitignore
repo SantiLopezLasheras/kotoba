@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.vercel
+
+# Ignorar seed script y migrations
+src/lib/seed.ts
+src/lib/migrations/
+
+# Configuración de Drizzle
+drizzle.config.ts

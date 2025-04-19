@@ -5,6 +5,8 @@ import { routing } from "@/i18n/routing";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import Navbar from "../components/Header";
 import { Providers } from "./providers";
+import { comprobarUsuarioEnBD } from "@/lib/comprobarUsuario";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 export const metadata: Metadata = {
   title: "Kotoba",
@@ -24,6 +26,17 @@ export default async function LocaleLayout({
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
     notFound();
+  }
+
+  // comprobar si el usuario existe en la base de datos
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+
+  if (user) {
+    await comprobarUsuarioEnBD({
+      id: user.id,
+      email: user.email ?? undefined, // el email puede ser undefined
+    });
   }
 
   return (
