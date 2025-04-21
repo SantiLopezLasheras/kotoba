@@ -28,6 +28,9 @@ export default async function LocaleLayout({
     notFound();
   }
 
+  // cargar las traducciones
+  const messages = (await import(`../../../messages/${locale}.json`)).default;
+
   // comprobar si el usuario existe en la base de datos
   const { getUser } = getKindeServerSession();
   const user = await getUser();
@@ -43,7 +46,7 @@ export default async function LocaleLayout({
     <html lang={locale} suppressHydrationWarning>
       <body>
         <Providers>
-          <NextIntlClientProvider>
+          <NextIntlClientProvider locale={locale} messages={messages}>
             <Navbar />
             <main>{children}</main>
             {/* <Footer /> */}

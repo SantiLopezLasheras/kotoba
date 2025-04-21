@@ -8,7 +8,7 @@
     "description": "Aquesta és la pàgina d'informació"
   },
   "NotFound": {
-    "title": "404 No trobat",
-    "description": "La pàgina que busques no existeix."
+    "heading": "Mamma mia! Quina vergonya!",
+    "subheading": "No recordo on vaig deixar eixa pàgina..."
   }
 }

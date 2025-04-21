@@ -8,7 +8,7 @@
     "description": "Esta es la página de información"
   },
   "NotFound": {
-    "title": "404 No encontrado",
-    "description": "La página que buscas no existe."
+    "heading": "Mamma mia! ¡Qué vergüenza!",
+    "subheading": "No recuerdo dónde guardé esa página..."
   }
 }
