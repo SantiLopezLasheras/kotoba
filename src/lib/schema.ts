@@ -2,67 +2,74 @@ import {
   pgTable,
   serial,
   varchar,
-  boolean,
   timestamp,
   text,
   integer,
 } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 
-export const customers = pgTable("customers", {
-  id: serial("id").primaryKey(),
-  firstName: varchar("first_name").notNull(),
-  lastName: varchar("last_name").notNull(),
-  email: varchar("email").notNull().unique(),
-  phone: varchar("phone").notNull().unique(),
-  address: varchar("address").notNull(),
-  city: varchar("city").notNull(),
-  state: varchar("state", { length: 2 }).notNull(),
-  zip: varchar("zip", { length: 10 }).notNull(),
-  notes: text("notes"),
-  active: boolean("active").notNull().default(true),
-  createdAt: timestamp("created_at").notNull().defaultNow(),
-  updatedAt: timestamp("updated_at")
-    .notNull()
-    .defaultNow()
-    .$onUpdate(() => new Date()),
-});
-
 export const users = pgTable("users", {
-  id: varchar("id").primaryKey(), // Kinde user ID
+  id: varchar("id").primaryKey(),
   email: varchar("email").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
+  role: varchar("role").default("user"),
 });
 
-export const tickets = pgTable("tickets", {
+export const listas = pgTable("listas", {
   id: serial("id").primaryKey(),
-  customerId: integer("customer_id")
-    .notNull()
-    .references(() => customers.id),
-  title: varchar("title").notNull(),
-  description: text("description").notNull(),
-  completed: boolean("completed").notNull().default(false),
-  createdAt: timestamp("created_at").notNull().defaultNow(),
+  userId: varchar("user_id").notNull(),
+  nombre: varchar("nombre").notNull(),
+  idioma: varchar("idioma").notNull(),
+  nivel: varchar("nivel").notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at")
-    .notNull()
     .defaultNow()
+    .notNull()
     .$onUpdate(() => new Date()),
 });
 
-// Create relations for the tickets table
-export const customersRelations = relations(customers, ({ many }) => ({
-  tickets: many(tickets),
+export const flashcards = pgTable("flashcards", {
+  id: serial("id").primaryKey(),
+  palabra: varchar("palabra").notNull(),
+  traduccion: varchar("traduccion").notNull(),
+  fraseEjemplo: text("frase_ejemplo"),
+  categoriaGramatical: varchar("categoria_gramatical"),
+  notas: text("notas"),
+  pronunciacion: varchar("pronunciacion"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at")
+    .defaultNow()
+    .notNull()
+    .$onUpdate(() => new Date()),
+  listaId: integer("lista_id")
+    .notNull()
+    .references(() => listas.id),
+  audio: varchar("audio"),
+  image: varchar("image"),
+});
+
+// Relaciones entre tablas
+export const usersRelations = relations(users, ({ many }) => ({
+  listas: many(listas), // un usuario puede tener muchas listas
 }));
 
-export const ticketsRelations = relations(tickets, ({ one }) => ({
-  customer: one(customers, {
-    fields: [tickets.customerId],
-    references: [customers.id],
+export const listasRelations = relations(listas, ({ one, many }) => ({
+  user: one(users, {
+    fields: [listas.userId],
+    references: [users.id], // una lista pertenece a un usuario
+  }),
+  flashcards: many(flashcards), // una lista puede tener muchas tarjetas
+}));
+
+export const flashcardsRelations = relations(flashcards, ({ one }) => ({
+  lista: one(listas, {
+    fields: [flashcards.listaId],
+    references: [listas.id], // una tarjeta pertenece a una lista
   }),
 }));
 
 export const schema = {
-  customers: customers,
   users: users,
-  tickets: tickets,
+  listas: listas,
+  flashcards: flashcards,
 };
