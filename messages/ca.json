@@ -1,7 +1,25 @@
 {
   "Home": {
-    "title": "Hola món!",
-    "about": "Vés a la pàgina d'informació"
+    "welcome": "Benvingut a KOTOBA",
+    "description": "Una plataforma que et permet crear llistes de vocabulari i flashcards per aprendre jugant.",
+    "cta": "Comencem?",
+    "discover": "Descobreix K O T O B A",
+    "feature1": {
+      "title": "Col·lecció de Jocs",
+      "desc": "Descobreix una selecció de minijocs per fer l'estudi més entretingut!"
+    },
+    "feature2": {
+      "title": "Llistes Personalitzades",
+      "desc": "Crea les teves pròpies llistes de vocabulari o accedeix a les disponibles a la plataforma."
+    },
+    "feature3": {
+      "title": "Diari d'Aprenentatge",
+      "desc": "Comença avui mateix un blog personal per practicar el teu nou idioma."
+    },
+    "feature4": {
+      "title": "Flashcards",
+      "desc": "Crea les teves pròpies targetes de vocabulari segons les teves necessitats."
+    }
   },
   "About": {
     "title": "Sobre nosaltres",
@@ -10,5 +28,22 @@
   "NotFound": {
     "heading": "Mamma mia! Quina vergonya!",
     "subheading": "No recordo on vaig deixar eixa pàgina..."
+  },
+  "Games": {
+    "heading": "Diverteix-te mentre aprens!",
+    "play": "Juga",
+    "review": {
+      "label": "Repàs",
+      "title": "Repàs de flashcards",
+      "desc": "Mira, no t'enganyaré. Això no és un joc. Però si no repasses de tant en tant, no milloraràs gaire."
+    },
+    "memory": {
+      "title": "Troba la traducció correcta!",
+      "desc": "El joc de memòria clàssic, però amb paraules! Relaciona cada paraula amb la seva traducció."
+    },
+    "dragdrop": {
+      "title": "Ordena les frases!",
+      "desc": "Idiomes els Jo cada dia aprenent estic... Quin embolic! Fes que les frases tinguin sentit!"
+    }
   }
 }

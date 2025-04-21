@@ -48,3 +48,6 @@ src/lib/migrations/
 
 # Configuración de Drizzle
 drizzle.config.ts
+
+# ignora archivo seed
+/src/lib/seed.ts

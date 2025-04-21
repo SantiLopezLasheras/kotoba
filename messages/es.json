@@ -1,7 +1,25 @@
 {
   "Home": {
-    "title": "Hola mundo!",
-    "about": "Visita la página de información"
+    "welcome": "Bienvenido a KOTOBA",
+    "description": "Una plataforma que te permite crear tus listas de vocabulario y flashcards para aprender jugando.",
+    "cta": "¿Empezamos?",
+    "discover": "Descubre K O T O B A",
+    "feature1": {
+      "title": "Colección de Juegos",
+      "desc": "¡Descubre una selección de minijuegos para hacer tu estudio más ameno!"
+    },
+    "feature2": {
+      "title": "Listas Personalizadas",
+      "desc": "Crea tus propias listas de vocabulario o accede a las listas disponibles en la plataforma."
+    },
+    "feature3": {
+      "title": "Diario de Aprendizaje",
+      "desc": "No esperes más y empieza a escribir ya un blog personal para practicar tu nuevo idioma."
+    },
+    "feature4": {
+      "title": "Flashcards",
+      "desc": "Crea tus propias tarjetas de vocabulario según tus necesidades."
+    }
   },
   "About": {
     "title": "Información",
@@ -10,5 +28,22 @@
   "NotFound": {
     "heading": "Mamma mia! ¡Qué vergüenza!",
     "subheading": "No recuerdo dónde guardé esa página..."
+  },
+  "Games": {
+    "heading": "¡Diviértete mientras aprendes!",
+    "play": "Jugar",
+    "review": {
+      "label": "Repasar",
+      "title": "Repasar flashcards",
+      "desc": "Mira, no te voy a engañar. Esto no es un juego. Pero si no repasas de vez en cuando, poco vas a mejorar."
+    },
+    "memory": {
+      "title": "¡Encuentra la traducción correcta!",
+      "desc": "El clásico juego de memoria de buscar parejas, pero con palabras. Busca las palabras y sus traducciones."
+    },
+    "dragdrop": {
+      "title": "¡Ordena las frases!",
+      "desc": "Idiomas los Yo todos días aprendiendo estoy. ¡Pero qué lío! Ni Yoda hablaba tan mal... Ordena las palabras."
+    }
   }
 }

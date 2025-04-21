@@ -1,7 +1,25 @@
 {
   "Home": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
+    "welcome": "Welcome to KOTOBA",
+    "description": "A platform that lets you create vocabulary lists and flashcards to learn through play.",
+    "cta": "Shall we start?",
+    "discover": "Discover K O T O B A",
+    "feature1": {
+      "title": "Games Collection",
+      "desc": "Explore a selection of mini-games to make studying more fun!"
+    },
+    "feature2": {
+      "title": "Custom Lists",
+      "desc": "Create your own vocabulary lists or browse existing ones."
+    },
+    "feature3": {
+      "title": "Learning Diary",
+      "desc": "Start writing a personal blog to practice your new language."
+    },
+    "feature4": {
+      "title": "Flashcards",
+      "desc": "Make your own vocabulary cards tailored to your needs."
+    }
   },
   "About": {
     "title": "About",
@@ -10,5 +28,22 @@
   "NotFound": {
     "heading": "Mamma mia! How embarrassing!",
     "subheading": "I can’t remember where I left that page..."
+  },
+  "Games": {
+    "heading": "Have fun while learning!",
+    "play": "Play",
+    "review": {
+      "label": "Review",
+      "title": "Review flashcards",
+      "desc": "Okay, this one's not a game. But if you don't review, you're not gonna improve!"
+    },
+    "memory": {
+      "title": "Find the correct translation!",
+      "desc": "Classic memory match, but with vocabulary! Match the word with its translation."
+    },
+    "dragdrop": {
+      "title": "Put the sentence in order!",
+      "desc": "I'm learning languages every day. Or... wait, how does that go again? Rearrange words to make sense!"
+    }
   }
 }

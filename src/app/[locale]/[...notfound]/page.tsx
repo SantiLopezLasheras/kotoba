@@ -17,10 +17,14 @@ export default function NotFound() {
         <title>{title}</title>
         <meta name="description" content={description} />
       </Head>
-      <div className="px-2 w-full min-h-[520px] bg-gradient-to-br from-blue-500 to-violet-500">
+      <div className="px-2 w-full min-h-[520px] bg-gradient-to-br from-[var(--color-blue)] to-[var(--color-accent)]">
         <div className="mx-auto py-6 flex flex-col justify-center items-center gap-4">
-          <h2 className="text-2xl">{t("heading")}</h2>
-          <h3>{t("subheading")}</h3>
+          <h2 className="text-2xl text-[var(--color-textPrimary)]">
+            {t("heading")}
+          </h2>
+          <h3 className="text-[var(--color-textSecondary)]">
+            {t("subheading")}
+          </h3>
           <Image
             className="mt-6 rounded-xl"
             src="/images/not-found-1024x1024.png"
