@@ -2,6 +2,8 @@
 
 import { Trash2 } from "lucide-react";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
 
 interface Props {
   id: number;
@@ -9,6 +11,7 @@ interface Props {
 
 export const DeleteButton = ({ id }: Props) => {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const handleDelete = async () => {
     const confirmDelete = window.confirm(
@@ -24,9 +27,12 @@ export const DeleteButton = ({ id }: Props) => {
 
         if (res.ok) {
           console.log("Lista borrada correctamente");
-          window.location.reload();
+          // window.location.reload();
+          router.refresh();
+          toast.success("Lista eliminada correctamente");
         } else {
           alert("Error al borrar la lista");
+          toast.error("Error al borrar la lista");
         }
       } catch (error) {
         console.error("Error al borrar la lista:", error);

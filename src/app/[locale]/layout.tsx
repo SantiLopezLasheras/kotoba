@@ -7,6 +7,7 @@ import Navbar from "../components/Header";
 import { Providers } from "./providers";
 import { comprobarUsuarioEnBD } from "@/lib/comprobarUsuario";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Kotoba",
@@ -49,6 +50,7 @@ export default async function LocaleLayout({
           <NextIntlClientProvider locale={locale} messages={messages}>
             <Navbar />
             <main>{children}</main>
+            <Toaster position="top-right" />
             {/* <Footer /> */}
           </NextIntlClientProvider>
         </Providers>

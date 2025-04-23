@@ -114,7 +114,7 @@ export async function PUT(req: NextRequest) {
 
 export async function DELETE(req: NextRequest) {
   const { searchParams } = new URL(req.url);
-  const id = searchParams.get("id");
+  const id = Number(searchParams.get("id"));
 
   if (!id) {
     return NextResponse.json(
@@ -124,7 +124,7 @@ export async function DELETE(req: NextRequest) {
   }
 
   try {
-    await deleteLista(Number(id));
+    await deleteLista(id);
     return NextResponse.json({
       message: "Se ha borrado la lista correctamente",
       id,

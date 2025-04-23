@@ -2,7 +2,9 @@ import { getFlashcardsByListId } from "@/lib/dbqueries/getFlashcards";
 import { getListaById } from "@/lib/dbqueries/getListaById";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { Pencil, Trash2 } from "lucide-react";
+import { CreateFlashcardButton } from "./CreateFlashcardButton";
+import { FlashcardDetail } from "./FlashcardDetail";
+import { ArrowLeft } from "lucide-react";
 
 interface TarjetasProps {
   params: Promise<{ id: string }>;
@@ -13,25 +15,35 @@ export default async function Tarjetas({ params }: TarjetasProps) {
 
   const listaId = parseInt(id, 10);
 
-  // Fetch the flashcards for the list
   const flashcards = await getFlashcardsByListId(listaId);
 
   if (!flashcards || flashcards.length === 0) {
-    // If no flashcards were found, handle the error (404)
     return notFound();
   }
 
-  // Fetch the list name (you can adjust this part based on your setup)
   const listaData = await getListaById(listaId);
 
   const listaNombre = listaData?.nombre || `Lista nº ${listaId}`;
 
   return (
     <>
-      <h1 className="text-center text-3xl p-5 text-[var(--color-textPrimary)] dark:text-white">
-        Tarjetas
-      </h1>
-      <h2 className="text-center text-xl text-[var(--color-textPrimary)] dark:text-gray-300">
+      <div className="flex justify-between items-center px-8 py-5">
+        <h1 className="text-center text-3xl text-[var(--color-textPrimary)] dark:text-white">
+          Tarjetas
+        </h1>
+        <div className="flex gap-4 items-center">
+          <Link
+            href={`/listas`}
+            className="bg-[var(--color-blue)] text-white py-2 px-6 rounded hover:bg-[var(--color-blue)]/80 transition duration-300 flex items-center"
+          >
+            <ArrowLeft className="w-5 h-5 mr-2" />
+            Volver
+          </Link>
+          <CreateFlashcardButton listaId={listaId} />
+        </div>
+      </div>
+
+      <h2 className="text-center text-xl text-[var(--color-textPrimary)] dark:text-gray-300 mb-4">
         {listaNombre || "Cargando nombre del mazo..."}
       </h2>
 
@@ -41,54 +53,17 @@ export default async function Tarjetas({ params }: TarjetasProps) {
       >
         {flashcards.length > 0 ? (
           flashcards.map((tarjeta) => (
-            <div
-              key={tarjeta.id}
-              className="w-full max-w-sm bg-white dark:bg-gray-800 rounded-xl shadow-md p-4"
-            >
-              <div className="flex flex-col justify-center items-center text-[var(--color-textPrimary)] dark:text-white">
-                <h3 className="text-2xl font-bold mb-2 text-center text-[var(--color-accent)] dark:text-[var(--color-accent)]">
-                  {tarjeta.palabra}
-                </h3>
-                <p className="text-lg font-semibold text-center">
-                  Traducción: {tarjeta.traduccion}
-                </p>
-                <p className="text-sm text-center mt-2">
-                  {tarjeta.fraseEjemplo || "No hay ejemplo disponible"}
-                </p>
+            <div key={tarjeta.id}>
+              {/* TarjetaDetail now handles each individual flashcard display */}
+              <FlashcardDetail flashcard={tarjeta} />
 
-                {/* Action Buttons */}
-                <div className="flex justify-between gap-2 mt-4">
-                  {/* Edit Button */}
-                  <Link
-                    href={`/flashcards/edit/${tarjeta.id}`}
-                    className="flex items-center bg-[var(--color-blue)] text-white py-2 px-4 rounded hover:bg-[var(--color-blue)]/80 transition duration-300"
-                  >
-                    <Pencil className="mr-2" />
-                    Editar
-                  </Link>
-
-                  {/* Delete Button */}
-                  <button className="flex items-center bg-red-500 text-white py-2 px-4 rounded hover:bg-red-700 transition duration-300">
-                    <Trash2 className="mr-2" />
-                    Eliminar
-                  </button>
-                </div>
-              </div>
+              {/* Edit Button */}
+              <div className="flex justify-between gap-2 mt-4"></div>
             </div>
           ))
         ) : (
           <p>No flashcards available.</p>
         )}
-      </div>
-
-      {/* Link back to the list */}
-      <div className="flex justify-center mt-6">
-        <Link
-          href={`/listas`}
-          className="bg-[var(--color-accent)] text-white py-2 px-6 rounded hover:bg-[var(--color-accent)]/80 transition duration-300"
-        >
-          Volver a las listas
-        </Link>
       </div>
     </>
   );

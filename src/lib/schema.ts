@@ -44,7 +44,6 @@ export const flashcards = pgTable("flashcards", {
   listaId: integer("lista_id")
     .notNull()
     .references(() => listas.id),
-  audio: varchar("audio"),
   image: varchar("image"),
 });
 

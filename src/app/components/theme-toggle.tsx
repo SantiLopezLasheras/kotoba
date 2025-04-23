@@ -22,7 +22,7 @@ export default function ThemeToggle() {
       <SunMedium className="w-5 h-5 text-yellow-500" />
       <button
         onClick={() => setTheme(isDark ? "light" : "dark")}
-        className={`w-12 h-6 flex items-center rounded-full px-1 transition-colors duration-300 ${
+        className={`w-12 h-6 flex items-center rounded-full cursor-pointer px-1 transition-colors duration-300 ${
           isDark ? "bg-orange-400" : "bg-gray-300"
         }`}
       >

@@ -6,6 +6,7 @@ export async function getFlashcardsByListId(listaId: number) {
   const flashcardsList = await db
     .select()
     .from(flashcards)
-    .where(eq(flashcards.listaId, listaId));
+    .where(eq(flashcards.listaId, listaId))
+    .orderBy(flashcards.createdAt);
   return flashcardsList;
 }
