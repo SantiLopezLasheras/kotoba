@@ -13,22 +13,26 @@ export default function ThemeToggle() {
   }, []);
 
   // evita errores de hidratación
-  const iconProps = {
-    strokeWidth: 1.5,
-    color: "#f27220",
-  };
+  if (!mounted) return null;
 
-  if (!mounted) {
-    return null; // evita errores de hidratación
-  }
+  const isDark = theme === "dark";
 
-  if (!theme) {
-    return <Moon {...iconProps} onClick={() => setTheme("dark")} />;
-  }
-
-  return theme === "dark" ? (
-    <SunMedium {...iconProps} onClick={() => setTheme("light")} />
-  ) : (
-    <Moon {...iconProps} onClick={() => setTheme("dark")} />
+  return (
+    <div className="flex items-center gap-2">
+      <SunMedium className="w-5 h-5 text-yellow-500" />
+      <button
+        onClick={() => setTheme(isDark ? "light" : "dark")}
+        className={`w-12 h-6 flex items-center rounded-full px-1 transition-colors duration-300 ${
+          isDark ? "bg-orange-400" : "bg-gray-300"
+        }`}
+      >
+        <div
+          className={`w-4 h-4 bg-white rounded-full shadow-md transform transition-transform duration-300 ${
+            isDark ? "translate-x-6" : "translate-x-0"
+          }`}
+        />
+      </button>
+      <Moon className="w-5 h-5 text-gray-500" />
+    </div>
   );
 }
