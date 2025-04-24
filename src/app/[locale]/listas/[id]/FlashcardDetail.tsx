@@ -6,9 +6,10 @@ import { AudioButton } from "./AudioButton";
 
 type Props = {
   flashcard: Flashcard;
+  language?: string;
 };
 
-export const FlashcardDetail: React.FC<Props> = ({ flashcard }) => (
+export const FlashcardDetail: React.FC<Props> = ({ flashcard, language }) => (
   <div className="relative w-full max-w-sm min-h-[320px] rounded-xl shadow-md p-4 hover:shadow-lg transition duration-300 text-[var(--color-textPrimary)] bg-gradient-to-br from-[var(--color-bgSecondary)] via-[var(--color-blue)]/10 to-[var(--color-pink)]/20 dark:bg-[var(--color-bgPrimary)] dark:text-[var(--color-textPrimary)]">
     <div className="flex flex-col justify-between h-full">
       <h3 className="text-2xl font-bold mb-4 text-center text-[var(--color-accent)]">
@@ -46,7 +47,11 @@ export const FlashcardDetail: React.FC<Props> = ({ flashcard }) => (
 
     {/* Botones */}
     <div className="absolute bottom-3 right-4 flex gap-3">
-      <AudioButton textToSpeak={flashcard.palabra} />
+      <AudioButton
+        textToSpeak={flashcard.palabra}
+        exampleToSpeak={flashcard.fraseEjemplo}
+        language={language}
+      />
       <HeartButton />
       <EditFlashcardButton
         flashcard={{

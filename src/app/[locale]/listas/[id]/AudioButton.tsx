@@ -4,20 +4,40 @@ import { Speaker } from "lucide-react";
 
 interface Props {
   textToSpeak: string;
+  exampleToSpeak?: string | null;
+  language?: string;
 }
 
-export const AudioButton = ({ textToSpeak }: Props) => {
+export const AudioButton = ({
+  textToSpeak,
+  exampleToSpeak,
+  language,
+}: Props) => {
   const handleAudioClick = () => {
-    // Create a new SpeechSynthesisUtterance instance with the text
-    const utterance = new SpeechSynthesisUtterance(textToSpeak);
+    if (language) {
+      if (language === "chino") {
+        language = "zh-CN";
+      }
+      if (language === "inglés") {
+        language = "en-US";
+      }
+    }
 
-    // Set the language to English (United States)
-    utterance.lang = "en-US"; // English (United States)
+    let utterance: SpeechSynthesisUtterance;
+    if (exampleToSpeak) {
+      utterance = new SpeechSynthesisUtterance(
+        `${textToSpeak}. ${exampleToSpeak}`
+      );
+    } else {
+      utterance = new SpeechSynthesisUtterance(textToSpeak);
+    }
+
+    utterance.lang = language || "en-US";
     utterance.pitch = 1;
     utterance.rate = 1;
-
-    // Speak the text
+    console.log("Available voices:", window.speechSynthesis.getVoices());
     window.speechSynthesis.speak(utterance);
+    // speakWithVoice(utterance);
   };
   return (
     <button
@@ -29,3 +49,34 @@ export const AudioButton = ({ textToSpeak }: Props) => {
     </button>
   );
 };
+
+// posible solución para Chrome
+// const speakWithVoice = (utterance: SpeechSynthesisUtterance) => {
+//   let voices = window.speechSynthesis.getVoices();
+
+//   if (!voices.length) {
+//     window.speechSynthesis.onvoiceschanged = () => {
+//       voices = window.speechSynthesis.getVoices();
+
+//       const matchingVoice = voices.find((voice) =>
+//         voice.lang.toLowerCase().startsWith(utterance.lang.toLowerCase())
+//       );
+
+//       if (matchingVoice) {
+//         utterance.voice = matchingVoice;
+//       }
+
+//       window.speechSynthesis.speak(utterance);
+//     };
+//   } else {
+//     const matchingVoice = voices.find((voice) =>
+//       voice.lang.toLowerCase().startsWith(utterance.lang.toLowerCase())
+//     );
+
+//     if (matchingVoice) {
+//       utterance.voice = matchingVoice;
+//     }
+
+//     window.speechSynthesis.speak(utterance);
+//   }
+// };

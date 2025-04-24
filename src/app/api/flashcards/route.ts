@@ -12,12 +12,10 @@ export async function POST(req: Request) {
     categoriaGramatical,
     notas,
     pronunciacion,
-    audio,
     image,
   } = await req.json();
 
   try {
-    // Create flashcard with all fields, not just the basic ones
     const newFlashcard = await createFlashcard({
       listaId,
       palabra,
@@ -26,7 +24,6 @@ export async function POST(req: Request) {
       categoriaGramatical,
       notas,
       pronunciacion,
-      audio,
       image,
     });
 
@@ -49,13 +46,11 @@ export async function PUT(req: Request) {
     categoriaGramatical,
     notas,
     pronunciacion,
-    audio,
     image,
     listaId,
-  } = await req.json(); // Get all necessary fields from the request
+  } = await req.json();
 
   try {
-    // Pass all the fields to the updateFlashcard function
     const updatedFlashcard = await updateFlashcard(id, {
       palabra,
       traduccion,
@@ -63,7 +58,6 @@ export async function PUT(req: Request) {
       categoriaGramatical,
       notas,
       pronunciacion,
-      audio,
       image,
       listaId,
     });
