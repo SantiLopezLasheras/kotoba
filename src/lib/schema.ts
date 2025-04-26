@@ -5,6 +5,7 @@ import {
   timestamp,
   text,
   integer,
+  primaryKey,
 } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 
@@ -47,23 +48,51 @@ export const flashcards = pgTable("flashcards", {
   image: varchar("image"),
 });
 
+export const userFavorites = pgTable(
+  "user_favorites",
+  {
+    userId: varchar("user_id")
+      .notNull()
+      .references(() => users.id),
+    flashcardId: integer("flashcard_id")
+      .notNull()
+      .references(() => flashcards.id),
+    createdAt: timestamp("created_at").defaultNow().notNull(),
+  },
+  (table) => ({
+    primaryKey: primaryKey(table.userId, table.flashcardId),
+  })
+);
+
 // Relaciones entre tablas
 export const usersRelations = relations(users, ({ many }) => ({
-  listas: many(listas), // un usuario puede tener muchas listas
+  listas: many(listas),
+  favorites: many(userFavorites),
 }));
 
 export const listasRelations = relations(listas, ({ one, many }) => ({
   user: one(users, {
     fields: [listas.userId],
-    references: [users.id], // una lista pertenece a un usuario
+    references: [users.id],
   }),
-  flashcards: many(flashcards), // una lista puede tener muchas tarjetas
+  flashcards: many(flashcards),
 }));
 
 export const flashcardsRelations = relations(flashcards, ({ one }) => ({
   lista: one(listas, {
     fields: [flashcards.listaId],
-    references: [listas.id], // una tarjeta pertenece a una lista
+    references: [listas.id],
+  }),
+}));
+
+export const userFavoritesRelations = relations(userFavorites, ({ one }) => ({
+  user: one(users, {
+    fields: [userFavorites.userId],
+    references: [users.id],
+  }),
+  flashcard: one(flashcards, {
+    fields: [userFavorites.flashcardId],
+    references: [flashcards.id],
   }),
 }));
 
@@ -71,4 +100,5 @@ export const schema = {
   users: users,
   listas: listas,
   flashcards: flashcards,
+  userFavorites: userFavorites,
 };

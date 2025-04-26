@@ -54,7 +54,6 @@ export default async function Tarjetas({ params }: TarjetasProps) {
         {flashcards.length > 0 ? (
           flashcards.map((tarjeta) => (
             <div key={tarjeta.id}>
-              {/* TarjetaDetail now handles each individual flashcard display */}
               <FlashcardDetail
                 flashcard={tarjeta}
                 language={listaData.idioma}

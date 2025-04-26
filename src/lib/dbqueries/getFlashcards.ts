@@ -8,5 +8,6 @@ export async function getFlashcardsByListId(listaId: number) {
     .from(flashcards)
     .where(eq(flashcards.listaId, listaId))
     .orderBy(flashcards.createdAt);
+
   return flashcardsList;
 }

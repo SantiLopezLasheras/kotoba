@@ -35,7 +35,7 @@ export const AudioButton = ({
     utterance.lang = language || "en-US";
     utterance.pitch = 1;
     utterance.rate = 1;
-    console.log("Available voices:", window.speechSynthesis.getVoices());
+
     window.speechSynthesis.speak(utterance);
     // speakWithVoice(utterance);
   };

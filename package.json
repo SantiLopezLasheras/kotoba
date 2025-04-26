@@ -14,6 +14,7 @@
     "@kinde-oss/kinde-auth-nextjs": "^2.6.1",
     "@neondatabase/serverless": "^1.0.0",
     "drizzle-orm": "^0.42.0",
+    "jspdf": "^3.0.1",
     "lucide-react": "^0.487.0",
     "next": "15.2.4",
     "next-intl": "^4.0.2",
