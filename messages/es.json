@@ -21,9 +21,11 @@
       "desc": "Crea tus propias tarjetas de vocabulario según tus necesidades."
     }
   },
-  "About": {
-    "title": "Información",
-    "description": "Esta es la página de información"
+  "Footer": {
+    "legalNotice": "Aviso legal",
+    "cookiePolicy": "Política de cookies",
+    "privacyPolicy": "Política de privacidad",
+    "copyright": "Todos los derechos reservados."
   },
   "NotFound": {
     "heading": "Mamma mia! ¡Qué vergüenza!",
@@ -44,6 +46,27 @@
     "dragdrop": {
       "title": "¡Ordena las frases!",
       "desc": "Idiomas los Yo todos días aprendiendo estoy. ¡Pero qué lío! Ni Yoda hablaba tan mal... Ordena las palabras."
+    },
+    "stripe": {
+      "loading": "Cargando...",
+      "paymentSuccessTitle": "¡Pago Exitoso!",
+      "paymentSuccessMessage": "Gracias por tu pago. Tu suscripción está activa.",
+      "paymentCanceledTitle": "Pago Cancelado",
+      "paymentCanceledMessage": "Tu pago ha sido cancelado. Si lo deseas, puedes intentarlo de nuevo.",
+      "tryAgain": "Intentar de nuevo",
+      "customerName": "Nombre",
+      "customerEmail": "Correo electrónico",
+      "username": "Nombre de usuario"
     }
+  },
+  "Stripe": {
+    "loading": "Cargando...",
+    "paymentSuccessTitle": "¡Pago Completado!",
+    "paymentSuccessMessage": "Gracias por tu pago. Tu suscripción está activa.",
+    "paymentCanceledTitle": "Pago Cancelado",
+    "paymentCanceledMessage": "Tu pago ha sido cancelado. Si lo deseas, puedes intentarlo de nuevo.",
+    "tryAgain": "Intentar de nuevo",
+    "customerEmail": "Correo electrónico",
+    "paymentStatus": "Estado del pago"
   }
 }

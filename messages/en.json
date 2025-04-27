@@ -21,9 +21,11 @@
       "desc": "Make your own vocabulary cards tailored to your needs."
     }
   },
-  "About": {
-    "title": "About",
-    "description": "This is the about page"
+  "Footer": {
+    "legalNotice": "Legal Notice",
+    "cookiePolicy": "Cookie Policy",
+    "privacyPolicy": "Privacy Policy",
+    "copyright": "All rights reserved."
   },
   "NotFound": {
     "heading": "Mamma mia! How embarrassing!",
@@ -45,5 +47,15 @@
       "title": "Put the sentence in order!",
       "desc": "I'm learning languages every day. Or... wait, how does that go again? Rearrange words to make sense!"
     }
+  },
+  "Stripe": {
+    "loading": "Loading...",
+    "paymentSuccessTitle": "Payment Successful!",
+    "paymentSuccessMessage": "Thank you for your payment. Your subscription is active.",
+    "paymentCanceledTitle": "Payment Canceled",
+    "paymentCanceledMessage": "Your payment has been canceled. If you wish, you can try again.",
+    "tryAgain": "Try Again",
+    "customerEmail": "Email",
+    "paymentStatus": "Payment Status"
   }
 }

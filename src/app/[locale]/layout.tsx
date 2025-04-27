@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import Navbar from "../components/Header";
+import Footer from "../components/Footer";
 import { Providers } from "./providers";
 import { comprobarUsuarioEnBD } from "@/lib/comprobarUsuario";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
@@ -53,7 +54,7 @@ export default async function LocaleLayout({
             <InitVoices />
             <main>{children}</main>
             <Toaster position="top-right" />
-            {/* <Footer /> */}
+            <Footer />
           </NextIntlClientProvider>
         </Providers>
       </body>

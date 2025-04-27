@@ -21,9 +21,11 @@
       "desc": "Crea les teves pròpies targetes de vocabulari segons les teves necessitats."
     }
   },
-  "About": {
-    "title": "Sobre nosaltres",
-    "description": "Aquesta és la pàgina d'informació"
+  "Footer": {
+    "legalNotice": "Avís legal",
+    "cookiePolicy": "Política de cookies",
+    "privacyPolicy": "Política de privacitat",
+    "copyright": "Tots els drets reservats."
   },
   "NotFound": {
     "heading": "Mamma mia! Quina vergonya!",
@@ -45,5 +47,15 @@
       "title": "Ordena les frases!",
       "desc": "Idiomes els Jo cada dia aprenent estic... Quin embolic! Fes que les frases tinguin sentit!"
     }
+  },
+  "Stripe": {
+    "loading": "Carregant...",
+    "paymentSuccessTitle": "Pagament Completat!",
+    "paymentSuccessMessage": "Gràcies pel teu pagament. La teva subscripció està activa.",
+    "paymentCanceledTitle": "Pagament Cancel·lat",
+    "paymentCanceledMessage": "El teu pagament ha estat cancel·lat. Si vols, pots intentar-ho de nou.",
+    "tryAgain": "Tornar-ho a provar",
+    "customerEmail": "Correu electrònic",
+    "paymentStatus": "Estat del pagament"
   }
 }
