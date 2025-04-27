@@ -26,7 +26,6 @@ export const DeleteButton = ({ id }: Props) => {
         });
 
         if (res.ok) {
-          console.log("Lista borrada correctamente");
           // window.location.reload();
           router.refresh();
           toast.success("Lista eliminada correctamente");

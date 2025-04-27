@@ -26,7 +26,7 @@ export const AudioButton = ({
     let utterance: SpeechSynthesisUtterance;
     if (exampleToSpeak) {
       utterance = new SpeechSynthesisUtterance(
-        `${textToSpeak}. ${exampleToSpeak}`
+        `${textToSpeak}. "". ${exampleToSpeak}`
       );
     } else {
       utterance = new SpeechSynthesisUtterance(textToSpeak);

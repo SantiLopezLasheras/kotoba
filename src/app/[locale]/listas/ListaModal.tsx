@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { X } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
+import { useTranslations } from "next-intl";
 
 interface Props {
   isOpen: boolean;
@@ -16,14 +18,46 @@ interface Props {
   };
 }
 
-const ListaModal = ({ isOpen, onClose, mode, id, defaultValues }: Props) => {
+export default function ListaModal({
+  isOpen,
+  onClose,
+  mode,
+  id,
+  defaultValues,
+}: Props) {
   const [name, setName] = useState("");
   const [language, setLanguage] = useState("");
   const [level, setLevel] = useState("");
   const [loading, setLoading] = useState(false);
-
+  const t = useTranslations("Listas");
   const router = useRouter();
 
+  // referencia al div del modal
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  // cerrar el modal si el usuario hace click fuera del modal
+  useEffect(() => {
+    if (isOpen) {
+      const handleOutsideClick = (event: MouseEvent) => {
+        if (
+          modalRef.current &&
+          !modalRef.current.contains(event.target as Node)
+        ) {
+          onClose();
+        }
+      };
+
+      // añade un event listener para detectar cuando el usuario hace click fuera
+      document.addEventListener("mousedown", handleOutsideClick);
+
+      // Quitar el event listener cuando se cierre el modal o se destruya el component
+      return () => {
+        document.removeEventListener("mousedown", handleOutsideClick);
+      };
+    }
+  }, [isOpen, onClose]);
+
+  // rellena los datos del formulario para poder editar
   useEffect(() => {
     if (defaultValues) {
       setName(defaultValues.nombre);
@@ -31,6 +65,15 @@ const ListaModal = ({ isOpen, onClose, mode, id, defaultValues }: Props) => {
       setLevel(defaultValues.nivel);
     }
   }, [defaultValues]);
+
+  // resetea los valores del formulario
+  useEffect(() => {
+    if (!isOpen) {
+      setName("");
+      setLanguage("");
+      setLevel("");
+    }
+  }, [isOpen]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -61,6 +104,11 @@ const ListaModal = ({ isOpen, onClose, mode, id, defaultValues }: Props) => {
       if (res.ok) {
         onClose();
         router.refresh();
+        toast.success(
+          mode === "edit"
+            ? "Lista actualizada correctamente"
+            : "Lista creada correctamente"
+        );
       } else {
         alert(
           mode === "edit"
@@ -80,14 +128,17 @@ const ListaModal = ({ isOpen, onClose, mode, id, defaultValues }: Props) => {
 
   return (
     <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
-      <div className="bg-[var(--color-bgPrimary)] text-[var(--color-textPrimary)] p-6 rounded-lg shadow-xl w-96">
+      <div
+        ref={modalRef}
+        className="bg-[var(--color-bgPrimary)] text-[var(--color-textPrimary)] p-6 rounded-lg shadow-xl w-96"
+      >
         <div className="flex justify-between items-center mb-4">
           <h3 className="text-xl font-semibold">
-            {mode === "edit" ? "Editar lista" : "Crear nueva lista"}
+            {mode === "edit" ? t("editlist") : t("createlist")}
           </h3>
           <button
             onClick={onClose}
-            className="text-[var(--color-inactive)] hover:text-[var(--color-accent)]"
+            className="text-[var(--color-inactive)] hover:text-[var(--color-accent)] cursor-pointer"
           >
             <X />
           </button>
@@ -97,7 +148,7 @@ const ListaModal = ({ isOpen, onClose, mode, id, defaultValues }: Props) => {
           {/* Nombre */}
           <div className="mb-4">
             <label htmlFor="name" className="block mb-1 font-medium">
-              Nombre de la lista
+              {t("listname")}
             </label>
             <input
               type="text"
@@ -112,7 +163,7 @@ const ListaModal = ({ isOpen, onClose, mode, id, defaultValues }: Props) => {
           {/* Idioma */}
           <div className="mb-4">
             <label htmlFor="language" className="block mb-1 font-medium">
-              Idioma
+              {t("language")}
             </label>
             <input
               type="text"
@@ -127,7 +178,7 @@ const ListaModal = ({ isOpen, onClose, mode, id, defaultValues }: Props) => {
           {/* Nivel */}
           <div className="mb-4">
             <label htmlFor="level" className="block mb-1 font-medium">
-              Nivel
+              {t("level")}
             </label>
             <input
               type="text"
@@ -143,29 +194,27 @@ const ListaModal = ({ isOpen, onClose, mode, id, defaultValues }: Props) => {
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded bg-[var(--color-bgSecondary)] border border-[var(--color-inactive)]"
+              className="px-4 py-2 cursor-pointer rounded bg-[var(--color-bgSecondary)] border border-[var(--color-inactive)]"
             >
-              Cancelar
+              {t("cancel")}
             </button>
 
             <button
               type="submit"
-              className="px-4 py-2 rounded bg-[var(--color-accent)] text-white"
+              className="px-4 py-2 cursor-pointer rounded bg-[var(--color-accent)] text-white"
               disabled={loading}
             >
               {loading
                 ? mode === "edit"
-                  ? "Guardando..."
-                  : "Creando..."
+                  ? t("saving")
+                  : t("creating")
                 : mode === "edit"
-                ? "Guardar cambios"
-                : "Crear lista"}
+                ? t("savechanges")
+                : t("createlist")}
             </button>
           </div>
         </form>
       </div>
     </div>
   );
-};
-
-export default ListaModal;
+}

@@ -31,6 +31,20 @@
     "heading": "Mamma mia! How embarrassing!",
     "subheading": "I can’t remember where I left that page..."
   },
+  "Listas": {
+    "listas": "Your Lists",
+    "create": "New List",
+    "edit": "Edit",
+    "cancel": "Cancel",
+    "listname": "List Name",
+    "level": "Level",
+    "language": "Language",
+    "createlist": "Create a New List",
+    "editlist": "Edit Your List",
+    "savechanges": "Save Changes",
+    "saving": "Saving...",
+    "creating": "Creating..."
+  },
   "Games": {
     "heading": "Have fun while learning!",
     "play": "Play",

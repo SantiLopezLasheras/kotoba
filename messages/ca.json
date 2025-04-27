@@ -31,6 +31,20 @@
     "heading": "Mamma mia! Quina vergonya!",
     "subheading": "No recordo on vaig deixar eixa pàgina..."
   },
+  "Listas": {
+    "listas": "Llister",
+    "create": "Crear llista",
+    "edit": "editar",
+    "cancel": "Cancel·lar",
+    "listname": "Nom de la llista",
+    "level": "Nivell",
+    "language": "Idioma",
+    "createlist": "Crear una llista nova",
+    "editlist": "Editar llista",
+    "savechanges": "Guardar canvis",
+    "saving": "Guardant...",
+    "creating": "Creant..."
+  },
   "Games": {
     "heading": "Diverteix-te mentre aprens!",
     "play": "Juga",

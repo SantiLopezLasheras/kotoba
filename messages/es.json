@@ -31,6 +31,20 @@
     "heading": "Mamma mia! ¡Qué vergüenza!",
     "subheading": "No recuerdo dónde guardé esa página..."
   },
+  "Listas": {
+    "listas": "Listas",
+    "create": "Crear lista",
+    "edit": "Editar",
+    "cancel": "Cancelar",
+    "listname": "Nombre de la lista",
+    "level": "Nivel",
+    "language": "Idioma",
+    "createlist": "Crear lista nueva",
+    "editlist": "Editar lista",
+    "savechanges": "Guardar cambios",
+    "saving": "Guardando...",
+    "creating": "Creando..."
+  },
   "Games": {
     "heading": "¡Diviértete mientras aprendes!",
     "play": "Jugar",

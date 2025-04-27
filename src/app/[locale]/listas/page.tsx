@@ -25,7 +25,7 @@ export default async function Listas() {
         {listas.map((lista) => (
           <div
             key={lista.id}
-            className="w-full max-w-sm bg-white dark:bg-gray-800 rounded-xl shadow-md p-4"
+            className="w-full max-w-sm bg-[var(--color-bgSecondary)] dark:bg-[var(--color-bgPrimary)] rounded-xs border border-[var(--color-accent)] shadow-md p-4"
           >
             <div className="flex flex-col justify-center items-center text-[var(--color-textPrimary)] dark:text-white">
               <h3 className="text-2xl font-bold mb-2 text-center text-[var(--color-accent)] dark:text-[var(--color-accent)]">
@@ -43,6 +43,7 @@ export default async function Listas() {
                 <Link
                   href={`/listas/${lista.id}`}
                   className="flex justify-between items-center bg-[var(--color-blue)] hover:bg-[var(--color-blue)]/80 text-white p-2 my-2 rounded"
+                  aria-label={`Ver contenido de la lista ${lista.nombre}`}
                 >
                   <span>Ir a la lista</span>
                   <Eye />
@@ -51,6 +52,7 @@ export default async function Listas() {
                 <Link
                   href={`/juegos/repasar/${lista.id}`}
                   className="flex justify-between items-center bg-[var(--color-accent)] hover:bg-[var(--color-accent)]/80 text-white p-2 my-2 rounded"
+                  aria-label={`Repasar lista ${lista.nombre}`}
                 >
                   <span>Repasar</span>
                   <BookOpenCheck />
