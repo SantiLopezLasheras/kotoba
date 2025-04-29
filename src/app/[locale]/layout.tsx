@@ -31,6 +31,8 @@ export default async function LocaleLayout({
     locale: string;
   }>;
 }>) {
+  const { isAuthenticated } = getKindeServerSession();
+  const isUserAuthenticated = (await isAuthenticated()) ?? false;
   // comprobar si el locale es válido
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
@@ -56,7 +58,7 @@ export default async function LocaleLayout({
       <body>
         <Providers>
           <NextIntlClientProvider locale={locale} messages={messages}>
-            <Navbar />
+            <Navbar isUserAuthenticated={isUserAuthenticated} />
             <InitVoices />
             <main>{children}</main>
             <Toaster position="top-right" />

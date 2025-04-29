@@ -21,6 +21,12 @@
       "desc": "Crea tus propias tarjetas de vocabulario según tus necesidades."
     }
   },
+  "Header": {
+    "lists": "Listas",
+    "games": "Juegos",
+    "favorites": "Favoritos",
+    "plans": "Planes"
+  },
   "Footer": {
     "legalNotice": "Aviso legal",
     "cookiePolicy": "Política de cookies",

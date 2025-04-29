@@ -21,6 +21,12 @@
       "desc": "Crea les teves pròpies targetes de vocabulari segons les teves necessitats."
     }
   },
+  "Header": {
+    "lists": "Llistes",
+    "games": "Jocs",
+    "favorites": "Favorits",
+    "plans": "Plans"
+  },
   "Footer": {
     "legalNotice": "Avís legal",
     "cookiePolicy": "Política de cookies",

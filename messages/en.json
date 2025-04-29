@@ -21,6 +21,12 @@
       "desc": "Make your own vocabulary cards tailored to your needs."
     }
   },
+  "Header": {
+    "lists": "Lists",
+    "games": "Games",
+    "favorites": "Favorites",
+    "plans": "Plans"
+  },
   "Footer": {
     "legalNotice": "Legal Notice",
     "cookiePolicy": "Cookie Policy",

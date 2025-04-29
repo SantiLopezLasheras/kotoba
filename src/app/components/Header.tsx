@@ -2,15 +2,17 @@ import Image from "next/image";
 import Link from "next/link";
 import LanguageToggler from "./language-toggle";
 import ThemeToggle from "./theme-toggle";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import { LogOut, LogIn } from "lucide-react";
-// import { useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 
-export default async function Header() {
-  const { isAuthenticated } = getKindeServerSession();
-  const isUserAuthenticated = await isAuthenticated();
-  // const t = useTranslations("Header");
+interface HeaderProps {
+  isUserAuthenticated: boolean;
+}
+
+export default function Header({ isUserAuthenticated }: HeaderProps) {
+  const t = useTranslations("Header");
+  console.log("Is User Authenticated: ", isUserAuthenticated);
 
   return (
     <nav className="flex justify-between items-center p-4 bg-bgPrimary">
@@ -25,19 +27,19 @@ export default async function Header() {
 
       <div className="flex space-x-4">
         <Link href="/listas" className="text-accent hover:underline uppercase">
-          Listas
+          {t("lists")}
         </Link>
         <Link href="/juegos" className="text-accent hover:underline uppercase">
-          Juegos
+          {t("games")}
         </Link>
         <Link href="/planes" className="text-accent hover:underline uppercase">
-          Planes
+          {t("plans")}
         </Link>
         <Link
           href="/favoritos"
           className="text-accent hover:underline uppercase"
         >
-          Favoritos
+          {t("favorites")}
         </Link>
       </div>
 
