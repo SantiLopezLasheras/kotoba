@@ -10,6 +10,12 @@ import { comprobarUsuarioEnBD } from "@/lib/comprobarUsuario";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { Toaster } from "react-hot-toast";
 import { InitVoices } from "./initVoices";
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Kotoba",
@@ -46,7 +52,7 @@ export default async function LocaleLayout({
   }
 
   return (
-    <html lang={locale} suppressHydrationWarning>
+    <html lang={locale} className={inter.className} suppressHydrationWarning>
       <body>
         <Providers>
           <NextIntlClientProvider locale={locale} messages={messages}>
