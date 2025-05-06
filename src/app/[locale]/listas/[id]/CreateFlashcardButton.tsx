@@ -17,7 +17,6 @@ export const CreateFlashcardButton = ({ listaId }: { listaId: number }) => {
         <span>Crear tarjeta</span>
       </button>
 
-      {/* Modal for creating or editing a flashcard */}
       <FlashcardModal
         isOpen={open}
         onClose={() => setOpen(false)}

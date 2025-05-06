@@ -5,6 +5,7 @@ import Link from "next/link";
 import { CreateFlashcardButton } from "./CreateFlashcardButton";
 import { FlashcardDetail } from "./FlashcardDetail";
 import { ArrowLeft } from "lucide-react";
+import Image from "next/image";
 
 interface TarjetasProps {
   params: Promise<{ id: string }>;
@@ -17,7 +18,7 @@ export default async function Tarjetas({ params }: TarjetasProps) {
 
   const flashcards = await getFlashcardsByListId(listaId);
 
-  if (!flashcards || flashcards.length === 0) {
+  if (!flashcards) {
     return notFound();
   }
 
@@ -37,7 +38,7 @@ export default async function Tarjetas({ params }: TarjetasProps) {
             className="bg-[var(--color-blue)] text-white py-2 px-6 rounded hover:bg-[var(--color-blue)]/80 transition duration-300 flex items-center"
           >
             <ArrowLeft className="w-5 h-5 mr-2" />
-            Volver
+            Volver a listas
           </Link>
           <CreateFlashcardButton listaId={listaId} />
         </div>
@@ -58,13 +59,25 @@ export default async function Tarjetas({ params }: TarjetasProps) {
                 flashcard={tarjeta}
                 language={listaData.idioma}
               />
-
-              {/* Edit Button */}
-              <div className="flex justify-between gap-2 mt-4"></div>
             </div>
           ))
         ) : (
-          <p>No flashcards available.</p>
+          <div className="col-span-full text-center text-gray-500">
+            <p className="text-xl mb-4">
+              La lista está vacía. Añade tarjetas para empezar.
+            </p>
+            <div className="mt-4 flex justify-center">
+              <CreateFlashcardButton listaId={listaId} />
+            </div>
+            <div className="flex justify-center mb-6">
+              <Image
+                src="/images/addnew.svg"
+                alt="Añadir nuevas tarjetas"
+                width={300}
+                height={300}
+              />
+            </div>
+          </div>
         )}
       </div>
     </>

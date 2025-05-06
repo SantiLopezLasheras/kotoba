@@ -21,6 +21,12 @@ export const AudioButton = ({
       if (language === "inglés") {
         language = "en-US";
       }
+      if (language === "japonés") {
+        language = "ja-JP";
+      }
+      if (language === "español") {
+        language = "es-ES";
+      }
     }
 
     let utterance: SpeechSynthesisUtterance;

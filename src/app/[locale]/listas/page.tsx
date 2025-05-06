@@ -50,7 +50,7 @@ export default async function Listas() {
                 </Link>
                 {/* Repasar lista */}
                 <Link
-                  href={`/juegos/repasar/${lista.id}`}
+                  href={`/repasar/${lista.id}`}
                   className="flex justify-between items-center bg-[var(--color-accent)] hover:bg-[var(--color-accent)]/80 text-white p-2 my-2 rounded"
                   aria-label={`Repasar lista ${lista.nombre}`}
                 >

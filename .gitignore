@@ -49,5 +49,8 @@ src/lib/migrations/
 # Configuración de Drizzle
 drizzle.config.ts
 
-# ignora archivo seed
+# ignora archivos seed
 /src/lib/seed.ts
+/src/lib/hskSeed.ts
+/src/lib/animalesSeed.ts
+/src/lib/n5KanjiSeed.ts
