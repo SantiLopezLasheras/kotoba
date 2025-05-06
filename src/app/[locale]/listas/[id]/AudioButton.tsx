@@ -55,34 +55,3 @@ export const AudioButton = ({
     </button>
   );
 };
-
-// posible solución para Chrome
-// const speakWithVoice = (utterance: SpeechSynthesisUtterance) => {
-//   let voices = window.speechSynthesis.getVoices();
-
-//   if (!voices.length) {
-//     window.speechSynthesis.onvoiceschanged = () => {
-//       voices = window.speechSynthesis.getVoices();
-
-//       const matchingVoice = voices.find((voice) =>
-//         voice.lang.toLowerCase().startsWith(utterance.lang.toLowerCase())
-//       );
-
-//       if (matchingVoice) {
-//         utterance.voice = matchingVoice;
-//       }
-
-//       window.speechSynthesis.speak(utterance);
-//     };
-//   } else {
-//     const matchingVoice = voices.find((voice) =>
-//       voice.lang.toLowerCase().startsWith(utterance.lang.toLowerCase())
-//     );
-
-//     if (matchingVoice) {
-//       utterance.voice = matchingVoice;
-//     }
-
-//     window.speechSynthesis.speak(utterance);
-//   }
-// };

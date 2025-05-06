@@ -5,11 +5,11 @@ import Link from "next/link";
 import Image from "next/image";
 
 interface RepasarMazoProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export default async function RepasarMazo({ params }: RepasarMazoProps) {
-  const { id } = params;
+  const { id } = await params;
 
   const listaId = parseInt(id, 10);
 
