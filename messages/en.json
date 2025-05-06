@@ -21,11 +21,23 @@
       "desc": "Make your own vocabulary cards tailored to your needs."
     }
   },
+  "Profile": {
+    "email": "Email",
+    "userId": "User ID",
+    "manageAccount": "Manage Account",
+    "noName": "Anonymous User"
+  },
   "Header": {
     "lists": "Lists",
     "games": "Games",
     "favorites": "Favorites",
     "plans": "Plans"
+  },
+  "UserMenu": {
+    "myProfile": "My Profile",
+    "myLists": "My Lists",
+    "adminPanel": "Dashboard",
+    "myFavorites": "My Favorites"
   },
   "Footer": {
     "legalNotice": "Legal Notice",

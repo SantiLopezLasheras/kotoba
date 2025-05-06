@@ -21,11 +21,23 @@
       "desc": "Crea tus propias tarjetas de vocabulario según tus necesidades."
     }
   },
+  "Profile": {
+    "email": "Correo electrónico",
+    "userId": "ID de usuario",
+    "manageAccount": "Gestionar cuenta",
+    "noName": "Usuario anónimo"
+  },
   "Header": {
     "lists": "Listas",
     "games": "Juegos",
     "favorites": "Favoritos",
     "plans": "Planes"
+  },
+  "UserMenu": {
+    "myProfile": "Mi Perfil",
+    "myLists": "Mis Listas",
+    "adminPanel": "Panel de Administración",
+    "myFavorites": "Mis Favoritos"
   },
   "Footer": {
     "legalNotice": "Aviso legal",

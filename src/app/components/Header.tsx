@@ -39,7 +39,7 @@ export default function Header({ isUserAuthenticated }: HeaderProps) {
       </div>
 
       <div className="flex items-center space-x-4">
-        {isUserAuthenticated && <UserMenu isAdmin={false} />}
+        {isUserAuthenticated && <UserMenu isAdmin={true} />}
         <ThemeToggle />
         <LanguageToggler />
         {isUserAuthenticated ? (

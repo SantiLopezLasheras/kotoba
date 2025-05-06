@@ -21,11 +21,23 @@
       "desc": "Crea les teves pròpies targetes de vocabulari segons les teves necessitats."
     }
   },
+  "Profile": {
+    "email": "Correu electrònic",
+    "userId": "ID d'usuari",
+    "manageAccount": "Gestiona el compte",
+    "noName": "Usuari anònim"
+  },
   "Header": {
     "lists": "Llistes",
     "games": "Jocs",
     "favorites": "Favorits",
     "plans": "Plans"
+  },
+  "UserMenu": {
+    "myProfile": "El meu perfil",
+    "myLists": "Les meves llistes",
+    "adminPanel": "Panell d'administració",
+    "myFavorites": "Els meus favorits"
   },
   "Footer": {
     "legalNotice": "Avís legal",

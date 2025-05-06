@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { UserRound } from "lucide-react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 interface UserMenuProps {
   isAdmin: boolean;
@@ -11,6 +12,7 @@ interface UserMenuProps {
 const UserMenu = ({ isAdmin }: UserMenuProps) => {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations("UserMenu");
 
   const toggleMenu = () => setOpen((prev) => !prev);
 
@@ -42,39 +44,42 @@ const UserMenu = ({ isAdmin }: UserMenuProps) => {
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-2 w-48 bg-white rounded shadow-lg z-50 overflow-hidden">
+        <div className="absolute right-0 mt-2 w-48 bg-white border border-blue rounded shadow-lg z-50 overflow-hidden">
           <ul className="flex flex-col text-sm text-gray-800">
             <li>
               <Link
-                href="#"
+                href="/perfil"
                 onClick={() => setOpen(false)}
-                className="block px-4 py-2 hover:bg-blue"
+                className="block px-4 py-2 hover:bg-blue transition-colors duration-200 focus:outline-none"
               >
-                Mi Perfil
+                {t("myProfile")}
               </Link>
             </li>
             <li>
               <Link
                 href="/favoritos"
                 onClick={() => setOpen(false)}
-                className="block px-4 py-2 hover:bg-blue"
+                className="block px-4 py-2 hover:bg-blue transition-colors duration-200 focus:outline-none"
               >
-                Mis Favoritos
+                {t("myFavorites")}
               </Link>
             </li>
             <li>
               <Link
                 href="/listas"
                 onClick={() => setOpen(false)}
-                className="block px-4 py-2 hover:bg-blue"
+                className="block px-4 py-2 hover:bg-blue transition-colors duration-200 focus:outline-none"
               >
-                Mis Listas
+                {t("myLists")}
               </Link>
             </li>
             {isAdmin && (
               <li>
-                <Link href="/admin" className="block px-4 py-2 hover:bg-blue">
-                  Dashboard
+                <Link
+                  href="/admin"
+                  className="block px-4 py-2 hover:bg-blue transition-colors duration-200 focus:outline-none"
+                >
+                  {t("adminPanel")}
                 </Link>
               </li>
             )}
