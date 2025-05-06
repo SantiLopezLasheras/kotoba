@@ -1,12 +1,13 @@
-export default function Dashboard() {
+import { requireAdmin } from "@/lib/auth/requireAdmin";
+
+export default async function Dashboard() {
+  const user = await requireAdmin();
+
   return (
-    <div className="min-h-screen bg-gray-100">
-      <h1 className="text-center text-4xl font-bold">
-        Welcome to your Dashboard
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <h1>
+        Hello, {user.role} with email: {user.email}!
       </h1>
-      <p className="text-center text-lg">
-        This is a placeholder for your dashboard page.
-      </p>
-    </div>
+    </main>
   );
 }

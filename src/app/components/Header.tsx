@@ -4,6 +4,7 @@ import LanguageToggler from "./language-toggle";
 import ThemeToggle from "./theme-toggle";
 import { LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import { LogOut, LogIn } from "lucide-react";
+import UserMenu from "./UserMenu";
 import { useTranslations } from "next-intl";
 
 interface HeaderProps {
@@ -35,17 +36,12 @@ export default function Header({ isUserAuthenticated }: HeaderProps) {
         <Link href="/planes" className="text-accent hover:underline uppercase">
           {t("plans")}
         </Link>
-        <Link
-          href="/favoritos"
-          className="text-accent hover:underline uppercase"
-        >
-          {t("favorites")}
-        </Link>
       </div>
 
       <div className="flex items-center space-x-4">
-        <LanguageToggler />
+        {isUserAuthenticated && <UserMenu isAdmin={false} />}
         <ThemeToggle />
+        <LanguageToggler />
         {isUserAuthenticated ? (
           <LogoutLink
             postLogoutRedirectURL="/"

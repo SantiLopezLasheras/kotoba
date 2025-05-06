@@ -126,7 +126,9 @@ export function FlashcardReview({ flashcards }: FlashcardReviewProps) {
           Siguiente
         </button>
       </div>
-
+      <p className="text-center mt-4 text-sm text-gray-600">
+        {currentIndex + 1} / {flashcards.length}
+      </p>
       <Link
         href={`/listas`}
         className="mt-4 block text-center text-[var(--color-blue)]"
