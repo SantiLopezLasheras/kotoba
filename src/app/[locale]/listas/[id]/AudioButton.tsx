@@ -27,12 +27,15 @@ export const AudioButton = ({
       if (language === "español") {
         language = "es-ES";
       }
+      if (language === "alemán") {
+        language = "de-DE";
+      }
     }
 
     let utterance: SpeechSynthesisUtterance;
     if (exampleToSpeak) {
       utterance = new SpeechSynthesisUtterance(
-        `${textToSpeak}. "". ${exampleToSpeak}`
+        `${textToSpeak}... ${exampleToSpeak}`
       );
     } else {
       utterance = new SpeechSynthesisUtterance(textToSpeak);

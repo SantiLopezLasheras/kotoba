@@ -54,3 +54,4 @@ drizzle.config.ts
 /src/lib/hskSeed.ts
 /src/lib/animalesSeed.ts
 /src/lib/n5KanjiSeed.ts
+/src/lib/tiereSeed.ts

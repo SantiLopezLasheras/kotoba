@@ -16,7 +16,7 @@ export default function Header({ isUserAuthenticated }: HeaderProps) {
   console.log("Is User Authenticated: ", isUserAuthenticated);
 
   return (
-    <nav className="flex justify-between items-center p-4 bg-bgPrimary">
+    <nav className="flex justify-between items-center p-4 bg-bgSecondary text-textPrimary border-b border-inactive">
       <Link href="/" className="flex items-center space-x-2">
         <Image
           src="/images/logo.png"

@@ -16,6 +16,9 @@ export async function getFavoriteFlashcardsByUserId(userId: string) {
       updatedAt: flashcards.updatedAt,
       listaId: flashcards.listaId,
       image: flashcards.image,
+      reviewFrequency: flashcards.reviewFrequency,
+      lastReviewedAt: flashcards.lastReviewedAt,
+      nextReviewAt: flashcards.nextReviewAt,
     })
     .from(userFavorites)
     .innerJoin(flashcards, eq(userFavorites.flashcardId, flashcards.id))

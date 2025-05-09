@@ -1,13 +1,38 @@
 import { db } from "../db";
 import { flashcards } from "../schema";
-import { eq } from "drizzle-orm";
+import { eq, lte, isNull, or, and } from "drizzle-orm";
 
 export async function getFlashcardsByListId(listaId: number) {
+  const now = new Date();
+
   const flashcardsList = await db
     .select()
     .from(flashcards)
-    .where(eq(flashcards.listaId, listaId))
-    .orderBy(flashcards.createdAt);
+    .where(
+      and(
+        eq(flashcards.listaId, listaId),
+        or(isNull(flashcards.nextReviewAt), lte(flashcards.nextReviewAt, now))
+      )
+    )
+    .orderBy(flashcards.nextReviewAt); // prioriza las tarjetas que deben ser revisadas primero
 
-  return flashcardsList;
+  return flashcardsList.map((flashcard) => ({
+    ...flashcard,
+    reviewFrequency: flashcard.reviewFrequency ?? 0,
+  }));
 }
+
+// antes de añadir la lógica de repetición
+// import { db } from "../db";
+// import { flashcards } from "../schema";
+// import { eq } from "drizzle-orm";
+
+// export async function getFlashcardsByListId(listaId: number) {
+//   const flashcardsList = await db
+//     .select()
+//     .from(flashcards)
+//     .where(eq(flashcards.listaId, listaId))
+//     .orderBy(flashcards.createdAt);
+
+//   return flashcardsList;
+// }
