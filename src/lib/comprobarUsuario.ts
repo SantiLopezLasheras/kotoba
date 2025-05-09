@@ -17,6 +17,5 @@ export async function comprobarUsuarioEnBD(user: {
       id: user.id,
       email: user.email ?? "",
     });
-    console.log(`✅ Se ha creado el usuario correctamente: ${user.email}`);
   }
 }

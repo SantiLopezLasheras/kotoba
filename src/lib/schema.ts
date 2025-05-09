@@ -46,6 +46,9 @@ export const flashcards = pgTable("flashcards", {
     .notNull()
     .references(() => listas.id),
   image: varchar("image"),
+  lastReviewedAt: timestamp("last_reviewed_at"),
+  nextReviewAt: timestamp("next_review_at"),
+  reviewFrequency: integer("review_frequency").default(0),
 });
 
 export const userFavorites = pgTable(

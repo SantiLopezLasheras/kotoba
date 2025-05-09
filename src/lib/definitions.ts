@@ -27,4 +27,7 @@ export type Flashcard = {
   updatedAt: Date;
   listaId: number;
   image?: string | null;
+  lastReviewedAt?: Date | null;
+  nextReviewAt?: Date | null;
+  reviewFrequency: number;
 };
