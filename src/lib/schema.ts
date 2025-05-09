@@ -6,6 +6,7 @@ import {
   text,
   integer,
   primaryKey,
+  boolean,
 } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 
@@ -22,6 +23,7 @@ export const listas = pgTable("listas", {
   nombre: varchar("nombre").notNull(),
   idioma: varchar("idioma").notNull(),
   nivel: varchar("nivel").notNull(),
+  public: boolean("public").default(false).notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at")
     .defaultNow()

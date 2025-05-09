@@ -4,9 +4,12 @@ import { getListas } from "@/lib/dbqueries/getListas";
 import { DeleteButton } from "./DeleteButton";
 import { CreateButton } from "./CreateButton";
 import { EditButton } from "./EditButton";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 export default async function Listas() {
-  const listas = await getListas();
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+  const listas = await getListas(user?.id);
 
   return (
     <>
