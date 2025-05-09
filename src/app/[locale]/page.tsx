@@ -1,9 +1,14 @@
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
+import { LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
-export default function Home() {
-  const t = useTranslations("Home");
+export default async function Home() {
+  const t = await getTranslations("Home");
+
+  const { isAuthenticated } = getKindeServerSession();
+  const isUserAuthenticated = (await isAuthenticated()) ?? false;
 
   return (
     <main className="bg-[var(--color-bgPrimary)] text-[var(--color-textPrimary)]">
@@ -24,12 +29,19 @@ export default function Home() {
           <p className="text-lg text-[var(--color-textPrimary)] mb-6">
             {t("description")}
           </p>
-          <Link
-            href="/register"
-            className="bg-[var(--color-accent)] text-white px-6 py-3 rounded-lg text-lg hover:opacity-90"
-          >
-            {t("cta")}
-          </Link>
+
+          {isUserAuthenticated ? (
+            <Link
+              href="/listas"
+              className="bg-[var(--color-accent)] text-white px-6 py-3 rounded-lg text-lg hover:opacity-90"
+            >
+              {t("cta")}
+            </Link>
+          ) : (
+            <LoginLink className="bg-[var(--color-accent)] text-white px-6 py-3 rounded-lg text-lg hover:opacity-90">
+              {t("cta")}
+            </LoginLink>
+          )}
         </div>
       </section>
 

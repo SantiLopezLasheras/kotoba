@@ -13,7 +13,6 @@ interface HeaderProps {
 
 export default function Header({ isUserAuthenticated }: HeaderProps) {
   const t = useTranslations("Header");
-  console.log("Is User Authenticated: ", isUserAuthenticated);
 
   return (
     <nav className="flex justify-between items-center p-4 bg-bgSecondary text-textPrimary border-b border-inactive">
