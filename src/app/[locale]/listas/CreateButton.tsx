@@ -21,7 +21,7 @@ export const CreateButton = () => {
     <>
       <button
         onClick={handleOpen}
-        className="bg-[var(--color-accent)] text-white p-2 rounded-lg flex items-center gap-2 hover:bg-[var(--color-accent)]/90 cursor-pointer"
+        className="bg-[var(--color-accent)] text-white p-2 rounded flex items-center gap-2 hover:bg-[var(--color-accent)]/90 cursor-pointer"
       >
         <Plus />
         <span>{t("create")}</span>

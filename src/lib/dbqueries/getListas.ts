@@ -2,18 +2,29 @@ import { db } from "../db";
 import { listas } from "../schema";
 import { eq, or } from "drizzle-orm";
 
-export async function getListas(userId: string | undefined) {
-  const listaRecords = await db
-    .select()
-    .from(listas)
-    .where(
-      or(
-        eq(listas.public, true),
-        userId ? eq(listas.userId, userId) : eq(listas.public, true)
-      )
-    );
+type FilterOptions = {
+  userId?: string;
+  visibility: "all" | "mine" | "public";
+};
 
-  return listaRecords;
+export async function getListas({ userId, visibility }: FilterOptions) {
+  if (visibility === "mine" && userId) {
+    return db.select().from(listas).where(eq(listas.userId, userId));
+  }
+
+  if (visibility === "public") {
+    return db.select().from(listas).where(eq(listas.public, true));
+  }
+
+  if (visibility === "all" && userId) {
+    return db
+      .select()
+      .from(listas)
+      .where(or(eq(listas.public, true), eq(listas.userId, userId)));
+  }
+
+  // fallback
+  return db.select().from(listas).where(eq(listas.public, true));
 }
 
 // Versión sin filtrar, devuelve todas las listas

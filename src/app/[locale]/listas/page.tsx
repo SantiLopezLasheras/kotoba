@@ -4,12 +4,24 @@ import { getListas } from "@/lib/dbqueries/getListas";
 import { DeleteButton } from "./DeleteButton";
 import { CreateButton } from "./CreateButton";
 import { EditButton } from "./EditButton";
+import { FilterBar } from "./FilterBar";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
-export default async function Listas() {
+export default async function Listas(props: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const searchParams = await props.searchParams;
+
+  const visibility =
+    (searchParams.visibility as "all" | "mine" | "public") ?? "all";
+
   const { getUser } = getKindeServerSession();
   const user = await getUser();
-  const listas = await getListas(user?.id);
+
+  const listas = await getListas({
+    userId: user?.id,
+    visibility,
+  });
 
   return (
     <>
@@ -17,8 +29,9 @@ export default async function Listas() {
         Listas
       </h1>
 
-      <div className="flex justify-end mb-4 px-8">
+      <div className="flex justify-end items-center mb-4 px-8 gap-2">
         <CreateButton />
+        <FilterBar current={visibility} />
       </div>
 
       <div
