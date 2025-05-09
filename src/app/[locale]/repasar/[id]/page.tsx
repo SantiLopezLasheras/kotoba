@@ -1,4 +1,5 @@
 import { getFlashcardsByListId } from "@/lib/dbqueries/getFlashcards";
+import { getListaById } from "@/lib/dbqueries/getListaById";
 import { notFound } from "next/navigation";
 import { FlashcardReview } from "./FlashcardReview";
 import Link from "next/link";
@@ -14,6 +15,13 @@ export default async function RepasarMazo({ params }: RepasarMazoProps) {
   const listaId = parseInt(id, 10);
 
   const flashcards = await getFlashcardsByListId(listaId);
+  const lista = await getListaById(listaId);
+
+  if (!lista) {
+    notFound();
+  }
+
+  const idioma = lista.idioma;
 
   if (!flashcards) {
     return notFound();
@@ -52,7 +60,7 @@ export default async function RepasarMazo({ params }: RepasarMazoProps) {
             </div>
           </div>
         ) : (
-          <FlashcardReview flashcards={flashcards} listaId={listaId} />
+          <FlashcardReview flashcards={flashcards} idioma={idioma} />
         )}
       </main>
     </div>

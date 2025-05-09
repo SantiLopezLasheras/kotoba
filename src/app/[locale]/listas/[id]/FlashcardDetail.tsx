@@ -2,7 +2,7 @@ import { Flashcard } from "@/lib/definitions";
 import { DeleteFlashcardButton } from "./DeleteFlashcardButton";
 import { EditFlashcardButton } from "./EditFlashcardButton";
 import { HeartButton } from "./HeartButton";
-import { AudioButton } from "./AudioButton";
+import { AudioButton } from "../../../components/AudioButton";
 
 type Props = {
   flashcard: Flashcard;

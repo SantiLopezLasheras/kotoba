@@ -9,10 +9,10 @@ import { FlashcardBack } from "./FlashcardBack";
 
 interface FlashcardReviewProps {
   flashcards: Flashcard[];
-  listaId: number;
+  idioma: string;
 }
 
-export function FlashcardReview({ flashcards }: FlashcardReviewProps) {
+export function FlashcardReview({ flashcards, idioma }: FlashcardReviewProps) {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [mostrar, setMostrar] = useState<boolean>(false);
 
@@ -67,7 +67,11 @@ export function FlashcardReview({ flashcards }: FlashcardReviewProps) {
 
         {/* Parte trasera */}
         <AnimatePresence mode="wait">
-          <FlashcardBack flashcard={currentFlashcard} mostrar={mostrar} />
+          <FlashcardBack
+            flashcard={currentFlashcard}
+            mostrar={mostrar}
+            idioma={idioma}
+          />
         </AnimatePresence>
       </div>
 
