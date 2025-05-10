@@ -53,10 +53,26 @@ export default async function Home() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-12">
           {/* Feature */}
           {[
-            { key: "feature1", imageAlt: "Games Collection" },
-            { key: "feature2", imageAlt: "Custom Lists" },
-            { key: "feature3", imageAlt: "Learning Diary" },
-            { key: "feature4", imageAlt: "Flashcards" },
+            {
+              key: "feature1",
+              imageSrc: "/images/gamescollection.png",
+              imageAlt: "Games Collection",
+            },
+            {
+              key: "feature2",
+              imageSrc: "/images/customlists.png",
+              imageAlt: "Custom Lists",
+            },
+            {
+              key: "feature3",
+              imageSrc: "/images/learningdiary.png",
+              imageAlt: "Learning Diary",
+            },
+            {
+              key: "feature4",
+              imageSrc: "/images/flashcards.png",
+              imageAlt: "Flashcards",
+            },
           ].map((feature, index) => (
             <div
               key={feature.key}
@@ -66,7 +82,7 @@ export default async function Home() {
             >
               <div className="w-full sm:w-1/2 mb-4 sm:mb-0 sm:px-4">
                 <Image
-                  src="/images/landing.jpg"
+                  src={feature.imageSrc}
                   alt={feature.imageAlt}
                   width={400}
                   height={300}
