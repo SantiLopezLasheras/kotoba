@@ -1,7 +1,7 @@
 import { Flashcard } from "@/lib/definitions";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { AudioButton } from "../../../components/AudioButton";
+import { AudioButton } from "../../../../components/AudioButton";
 
 interface FlashcardBackProps {
   flashcard: Flashcard;
