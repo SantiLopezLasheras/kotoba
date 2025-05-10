@@ -15,7 +15,7 @@ export default function Juegos() {
           title={t("memory.title")}
           description={t("memory.desc")}
           image="/images/memory-game.jpg"
-          href="/juegos/memory-game"
+          href="/juegos/memorygame"
           label={t("play")}
         />
 
