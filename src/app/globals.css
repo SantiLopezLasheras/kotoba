@@ -2,24 +2,33 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-white: #ffffff;
-  --color-pink: #eb6bd8;
+  /* --color-white: #ffffff; */
+  --color-white: #fffaf3;
+  /* --color-pink: #eb6bd8; */
+  --color-pink: #e46bb5;
   --color-accent: #f27220;
-  --color-textPrimary: #1d1f25;
+  /* --color-textPrimary: #1d1f25; */
+  --color-textPrimary: #2e2b27;
   --color-blue: #66b6c2;
-  --color-bgPrimary: #ffffff;
-  --color-bgSecondary: #f4f4f4;
-  --color-inactive: #b0b0b0;
+  /* --color-bgPrimary: #ffffff; */
+  --color-bgPrimary: #f9f3e9;
+  /* --color-bgSecondary: #f4f4f4; */
+  --color-bgSecondary: #f0e7d8;
+  --color-inactive: #a8a097;
 }
 
 @layer base {
   @variant dark {
-    --color-pink: #8e0d7a;
-    --color-textPrimary: #ffffff;
+    /* --color-pink: #8e0d7a; */
+    --color-pink: #803d6c;
+    /* --color-textPrimary: #ffffff; */
+    --color-textPrimary: #f3e9d6;
     --color-textSecondary: #66b6c2;
-    --color-bgPrimary: #1d1f25;
-    --color-bgSecondary: #2e323c;
-    --color-inactive: #707070;
+    /* --color-bgPrimary: #1d1f25; */
+    --color-bgPrimary: #2f2a24;
+    /* --color-bgSecondary: #2e323c; */
+    --color-bgSecondary: #3c342d;
+    --color-inactive: #84786b;
   }
 }
 
