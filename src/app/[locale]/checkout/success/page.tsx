@@ -34,12 +34,27 @@ export default function SuccessPage() {
         });
     }
   }, [sessionId]);
-  if (loading) {
-    return <div>{t("loading")}</div>;
-  }
 
-  // Datos del cliente
-  const customerEmail = sessionDetails?.customerEmail;
+  console.log("Estado del Pago: ", sessionDetails?.paymentStatus);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      window.location.href = "/";
+    }, 5000);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen text-center">
+        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+        <h2 className="text-xl font-semibold">Redirecting to checkout...</h2>
+        <p className="mt-2 text-gray-500">
+          Please wait while we prepare your payment.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="text-center py-12">
@@ -52,14 +67,7 @@ export default function SuccessPage() {
       />
       <h2 className="text-2xl font-semibold">{t("paymentSuccessTitle")}</h2>
       <p className="mt-4">{t("paymentSuccessMessage")}</p>
-
-      {/* Display user information if available */}
-      <div className="mt-8">
-        <p>
-          <strong>{t("customerEmail")}: </strong>
-          {customerEmail}
-        </p>
-      </div>
+      <p>{t("redirecting")}</p>
     </div>
   );
 }

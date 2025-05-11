@@ -77,6 +77,7 @@
   "Games": {
     "heading": "Diverteix-te mentre aprens!",
     "play": "Juga",
+    "subscribe": "Subscriu-te a Premium",
     "review": {
       "label": "Repàs",
       "title": "Repàs de flashcards",
@@ -93,6 +94,7 @@
   },
   "Stripe": {
     "loading": "Carregant...",
+    "redirecting": "De seguida seràs redirigit a la pàgina d'inici.",
     "paymentSuccessTitle": "Pagament Completat!",
     "paymentSuccessMessage": "Gràcies pel teu pagament. La teva subscripció està activa.",
     "paymentCanceledTitle": "Pagament Cancel·lat",

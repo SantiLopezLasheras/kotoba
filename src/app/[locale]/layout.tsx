@@ -9,6 +9,7 @@ import { Providers } from "./providers";
 import { comprobarUsuarioEnBD } from "@/lib/comprobarUsuario";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { checkAdminRole } from "@/lib/auth/checkAdmin";
+import { checkPremiumRole } from "@/lib/auth/checkPremium";
 import { Toaster } from "react-hot-toast";
 import { InitVoices } from "./initVoices";
 import { Inter } from "next/font/google";
@@ -39,6 +40,9 @@ export default async function LocaleLayout({
   // comprobar si el usuario es admin
   const isAdmin = await checkAdminRole();
 
+  // comprobar si el usuario es premium
+  const isPremium = await checkPremiumRole();
+
   // comprobar si el locale es válido
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
@@ -67,6 +71,7 @@ export default async function LocaleLayout({
             <Navbar
               isUserAuthenticated={isUserAuthenticated}
               isAdmin={isAdmin}
+              isPremium={isPremium}
             />
             <InitVoices />
             <main>{children}</main>

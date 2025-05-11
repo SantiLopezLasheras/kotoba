@@ -10,9 +10,14 @@ import { useTranslations } from "next-intl";
 interface HeaderProps {
   isUserAuthenticated: boolean;
   isAdmin: boolean;
+  isPremium: boolean;
 }
 
-export default function Header({ isUserAuthenticated, isAdmin }: HeaderProps) {
+export default function Header({
+  isUserAuthenticated,
+  isAdmin,
+  isPremium,
+}: HeaderProps) {
   const t = useTranslations("Header");
 
   return (
@@ -40,6 +45,11 @@ export default function Header({ isUserAuthenticated, isAdmin }: HeaderProps) {
 
       <div className="flex items-center space-x-4">
         {isUserAuthenticated && <UserMenu isAdmin={isAdmin} />}
+        {isPremium && (
+          <span className="bg-yellow-400 text-black text-xs font-semibold px-2 py-1 rounded uppercase">
+            Premium
+          </span>
+        )}
         <ThemeToggle />
         <LanguageToggler />
         {isUserAuthenticated ? (

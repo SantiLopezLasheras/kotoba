@@ -1,4 +1,7 @@
 import Stripe from "stripe";
+import { db } from "@/lib/db";
+import { eq } from "drizzle-orm";
+import { users } from "../../../lib/schema";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
   apiVersion: "2025-03-31.basil",
@@ -42,8 +45,7 @@ export async function GET(req: Request) {
     }
 
     // Recupera los datos de la sesión de Stripe
-    const session = await stripe.checkout.sessions.retrieve(sessionId); // Log the session object for debugging
-    console.log("Stripe session:", session);
+    const session = await stripe.checkout.sessions.retrieve(sessionId);
 
     if (!session) {
       return new Response("Sesión de Stripe no encontrada", { status: 404 });
@@ -52,6 +54,23 @@ export async function GET(req: Request) {
     // Devuelve los datos de la sesión
     const customerEmail = session.customer_details?.email;
     const paymentStatus = session.payment_status;
+
+    // Cambia el rol del usuario a premium si se ha realizado el pago con éxito
+    if (customerEmail && paymentStatus === "paid") {
+      const userResult = await db
+        .select()
+        .from(users)
+        .where(eq(users.email, customerEmail))
+        .limit(1);
+
+      const user = userResult[0];
+      if (user) {
+        await db
+          .update(users)
+          .set({ role: "premium" })
+          .where(eq(users.id, user.id));
+      }
+    }
 
     return new Response(JSON.stringify({ customerEmail, paymentStatus }), {
       status: 200,

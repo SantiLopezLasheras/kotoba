@@ -77,6 +77,7 @@
   "Games": {
     "heading": "Have fun while learning!",
     "play": "Play",
+    "subscribe": "Subscribe to Premium",
     "review": {
       "label": "Review",
       "title": "Review flashcards",
@@ -93,6 +94,7 @@
   },
   "Stripe": {
     "loading": "Loading...",
+    "redirecting": "Soon you will be redirected to the home page.",
     "paymentSuccessTitle": "Payment Successful!",
     "paymentSuccessMessage": "Thank you for your payment. Your subscription is active.",
     "paymentCanceledTitle": "Payment Canceled",
