@@ -29,9 +29,14 @@
     "name": "Name",
     "saving": "Saving...",
     "saveChanges": "Save Changes",
+    "nameUpdated": "Name updated successfully",
+    "nameUpdateFailed": "Failed to update name",
     "yourLearningStats": "Your Learning Stats",
     "listsPerLanguage": "Lists per Language",
     "flashcardsPerLanguage": "Flashcards per Language"
+  },
+  "Dashboard": {
+    "dashboardWelcome": "Welcome to the Admin Dashboard"
   },
   "Header": {
     "lists": "Lists",

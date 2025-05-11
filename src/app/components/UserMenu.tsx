@@ -1,8 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { UserRound } from "lucide-react";
-import Link from "next/link";
 import { useTranslations } from "next-intl";
 
 interface UserMenuProps {
@@ -76,7 +76,7 @@ const UserMenu = ({ isAdmin }: UserMenuProps) => {
             {isAdmin && (
               <li>
                 <Link
-                  href="/admin"
+                  href="/dashboard"
                   className="block px-4 py-2 hover:bg-blue transition-colors duration-200 focus:outline-none"
                 >
                   {t("adminPanel")}

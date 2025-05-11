@@ -4,6 +4,8 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { updateUserName } from "@/lib/dbqueries/stats/updateName";
 import { useTranslations } from "next-intl";
+import * as Sentry from "@sentry/nextjs";
+import toast from "react-hot-toast";
 
 export function EditNameForm({ initialName }: { initialName: string }) {
   const t = useTranslations("Profile");
@@ -14,8 +16,14 @@ export function EditNameForm({ initialName }: { initialName: string }) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     startTransition(async () => {
-      await updateUserName(name);
-      router.refresh();
+      try {
+        await updateUserName(name);
+        toast.success(t("nameUpdated"));
+        router.refresh();
+      } catch (error) {
+        Sentry.captureException(error);
+        toast.error(t("nameUpdateFailed"));
+      }
     });
   };
 

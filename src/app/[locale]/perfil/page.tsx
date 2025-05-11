@@ -20,6 +20,18 @@ export default async function ProfilePage() {
 
   if (!user) return redirect("/");
 
+  // function triggerError() {
+  //   Promise.resolve()
+  //     .then(() => {
+  //       throw new Error("Prueba de error para Sentry");
+  //     })
+  //     .catch((error) => {
+  //       throw error;
+  //     });
+  // }
+
+  // triggerError();
+
   const t = await getTranslations("Profile");
 
   const avatarUrl = getRandomAvatar();
@@ -44,9 +56,8 @@ export default async function ProfilePage() {
     <main className="min-h-screen bg-bgPrimary py-16 px-4">
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
         <div className="bg-white dark:bg-gray-900 shadow-lg rounded-lg p-8">
-          {/* Top Section: Profile Info + Edit Form */}
           <section className="flex flex-col lg:flex-row gap-10 mb-12">
-            {/* User Info */}
+            {/* Información del Usuario */}
             <div className="flex-1 text-center lg:text-left">
               <div className="w-32 h-32 mx-auto lg:mx-0 mb-6 relative rounded-full overflow-hidden border-4 border-accent">
                 <Image
@@ -68,7 +79,7 @@ export default async function ProfilePage() {
               </p>
             </div>
 
-            {/* Edit Name Form */}
+            {/* Formulario */}
             <div className="flex-1">
               <h3 className="text-xl font-semibold text-gray-700 dark:text-white mb-4">
                 {t("editProfile")}
@@ -80,9 +91,8 @@ export default async function ProfilePage() {
           {/* Línea horizontal para crear una separación visual */}
           <div className="border-t-2 border-accent mb-8 w-full"></div>
 
-          {/* Stats Charts */}
+          {/* Estadísticas */}
           <section className="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-10">
-            {/* Top-level Stats */}
             <div className="mb-8">
               <h3 className="text-lg font-medium mb-8 text-gray-700 dark:text-gray-200">
                 {t("yourLearningStats")}
@@ -96,7 +106,6 @@ export default async function ProfilePage() {
               </div>
             </div>
 
-            {/* Lists per Language */}
             <div className="lg:col-span-1">
               <h3 className="text-lg font-medium mb-2 text-gray-700 dark:text-gray-200">
                 {t("listsPerLanguage")}
@@ -104,7 +113,6 @@ export default async function ProfilePage() {
               <UserListsPerLanguageChart data={listsPerLang ?? []} />
             </div>
 
-            {/* Flashcards per Language */}
             <div className="lg:col-span-1">
               <h3 className="text-lg font-medium mb-2 text-gray-700 dark:text-gray-200">
                 {t("flashcardsPerLanguage")}

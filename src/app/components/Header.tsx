@@ -9,9 +9,10 @@ import { useTranslations } from "next-intl";
 
 interface HeaderProps {
   isUserAuthenticated: boolean;
+  isAdmin: boolean;
 }
 
-export default function Header({ isUserAuthenticated }: HeaderProps) {
+export default function Header({ isUserAuthenticated, isAdmin }: HeaderProps) {
   const t = useTranslations("Header");
 
   return (
@@ -38,7 +39,7 @@ export default function Header({ isUserAuthenticated }: HeaderProps) {
       </div>
 
       <div className="flex items-center space-x-4">
-        {isUserAuthenticated && <UserMenu isAdmin={true} />}
+        {isUserAuthenticated && <UserMenu isAdmin={isAdmin} />}
         <ThemeToggle />
         <LanguageToggler />
         {isUserAuthenticated ? (

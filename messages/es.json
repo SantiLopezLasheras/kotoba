@@ -29,9 +29,14 @@
     "name": "Nombre",
     "saving": "Guardando...",
     "saveChanges": "Guardar cambios",
+    "nameUpdated": "Nombre actualizado correctamente",
+    "nameUpdateFailed": "Error al actualizar el nombre",
     "yourLearningStats": "Tus estadísticas de aprendizaje",
     "listsPerLanguage": "Listas por idioma",
     "flashcardsPerLanguage": "Tarjetas de aprendizaje por idioma"
+  },
+  "Dashboard": {
+    "dashboardWelcome": "Bienvenido al Dashboard del Administrador"
   },
   "Header": {
     "lists": "Listas",

@@ -15,7 +15,7 @@ export const users = pgTable("users", {
   email: varchar("email").notNull(),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   role: varchar("role").default("user"),
-  name: varchar("name"),
+  name: varchar("name").default(""),
 });
 
 export const listas = pgTable("listas", {

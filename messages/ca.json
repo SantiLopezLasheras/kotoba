@@ -29,9 +29,14 @@
     "name": "Nom",
     "saving": "Guardant...",
     "saveChanges": "Desa els canvis",
+    "nameUpdated": "Nom actualitzat amb èxit",
+    "nameUpdateFailed": "No s'ha pogut actualitzar el nom",
     "yourLearningStats": "Les teves estadístiques d'aprenentatge",
     "listsPerLanguage": "Llistes per idioma",
     "flashcardsPerLanguage": "Targetes d'aprenentatge per idioma"
+  },
+  "Dashboard": {
+    "dashboardWelcome": "Benvingut al Dashboard d'Administració"
   },
   "Header": {
     "lists": "Llistes",
