@@ -66,7 +66,7 @@ const UserMenu = ({ isAdmin }: UserMenuProps) => {
             </li>
             <li>
               <Link
-                href="/listas"
+                href="/listas?visibility=mine"
                 onClick={() => setOpen(false)}
                 className="block px-4 py-2 hover:bg-blue transition-colors duration-200 focus:outline-none"
               >

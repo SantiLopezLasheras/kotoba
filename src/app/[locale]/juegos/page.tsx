@@ -14,7 +14,7 @@ export default function Juegos() {
         <GameCard
           title={t("memory.title")}
           description={t("memory.desc")}
-          image="/images/memory-game.jpg"
+          image="/images/memorygame.png"
           href="/juegos/memorygame"
           label={t("play")}
         />
@@ -22,7 +22,7 @@ export default function Juegos() {
         <GameCard
           title={t("dragdrop.title")}
           description={t("dragdrop.desc")}
-          image="/images/drag-drop.jpg"
+          image="/images/dragdrop.png"
           href="/juegos/dragdrop"
           label={t("play")}
         />
@@ -30,7 +30,7 @@ export default function Juegos() {
         <GameCard
           title={t("review.title")}
           description={t("review.desc")}
-          image="/images/repasar.webp"
+          image="/images/review.png"
           href="/juegos/repasar"
           label={t("review.label")}
         />

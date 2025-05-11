@@ -28,8 +28,8 @@ export function FlashcardFavoritesClient({
 
   const handleUnfavorite = async (id: number) => {
     try {
-      await unfavoriteCard(userId, id); // Call the unfavorite action on the backend
-      router.refresh(); // Refresh the page to re-fetch the updated list of favorites from the server
+      await unfavoriteCard(userId, id);
+      router.refresh();
     } catch (err) {
       console.error("Error al eliminar favorito:", err);
     }
@@ -40,7 +40,7 @@ export function FlashcardFavoritesClient({
       <div className="flex justify-end gap-4 px-8 py-5">
         <button
           onClick={() => printFlashcards(flashcards)}
-          className="flex items-center gap-2 bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"
+          className="flex items-center gap-2 bg-orange-500 text-white px-4 py-2 rounded cursor-pointer hover:bg-orange-600"
         >
           <Printer size={18} />
           Imprimir Flashcards
@@ -66,7 +66,7 @@ export function FlashcardFavoritesClient({
             flashcards={filtered}
             userId={userId}
             onFlashcardSelect={setSelected}
-            onUnfavorite={handleUnfavorite} // Pass the unfavoriting logic here
+            onUnfavorite={handleUnfavorite}
           />
         </div>
 

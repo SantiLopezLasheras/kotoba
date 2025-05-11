@@ -49,11 +49,24 @@ export default function CheckoutPage() {
   }, [locale]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex flex-col items-center justify-center h-screen text-center">
+        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+        <h2 className="text-xl font-semibold">Redirecting to checkout...</h2>
+        <p className="mt-2 text-gray-500">
+          Please wait while we prepare your payment.
+        </p>
+      </div>
+    );
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return (
+      <div className="text-center py-12">
+        <h2 className="text-2xl font-semibold text-red-600">Error</h2>
+        <p className="mt-4">{error}</p>
+      </div>
+    );
   }
 
   return (

@@ -23,9 +23,15 @@
   },
   "Profile": {
     "email": "Correo electrónico",
+    "welcome": "Bienvenido",
     "userId": "ID de usuario",
-    "manageAccount": "Gestionar cuenta",
-    "noName": "Usuario anónimo"
+    "editProfile": "Editar perfil",
+    "name": "Nombre",
+    "saving": "Guardando...",
+    "saveChanges": "Guardar cambios",
+    "yourLearningStats": "Tus estadísticas de aprendizaje",
+    "listsPerLanguage": "Listas por idioma",
+    "flashcardsPerLanguage": "Tarjetas de aprendizaje por idioma"
   },
   "Header": {
     "lists": "Listas",

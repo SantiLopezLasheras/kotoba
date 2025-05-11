@@ -23,9 +23,15 @@
   },
   "Profile": {
     "email": "Email",
+    "welcome": "Welcome",
     "userId": "User ID",
-    "manageAccount": "Manage Account",
-    "noName": "Anonymous User"
+    "editProfile": "Edit Profile",
+    "name": "Name",
+    "saving": "Saving...",
+    "saveChanges": "Save Changes",
+    "yourLearningStats": "Your Learning Stats",
+    "listsPerLanguage": "Lists per Language",
+    "flashcardsPerLanguage": "Flashcards per Language"
   },
   "Header": {
     "lists": "Lists",

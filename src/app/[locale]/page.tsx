@@ -15,11 +15,11 @@ export default async function Home() {
       <section className="flex flex-col lg:flex-row items-center justify-between py-16 px-8 max-w-screen-xl mx-auto">
         <div className="w-full lg:w-1/2 mb-8 lg:mb-0">
           <Image
-            src="/images/landing.jpg"
+            src="/images/landing.png"
             alt="App Landing Image"
             width={500}
             height={500}
-            className="rounded-lg shadow-lg"
+            className="rounded shadow-lg"
           />
         </div>
         <div className="w-full lg:w-1/2 lg:pl-8">
@@ -33,12 +33,12 @@ export default async function Home() {
           {isUserAuthenticated ? (
             <Link
               href="/listas"
-              className="bg-[var(--color-accent)] text-white px-6 py-3 rounded-lg text-lg hover:opacity-90"
+              className="bg-[var(--color-accent)] text-white px-6 py-3 rounded text-lg hover:opacity-90"
             >
               {t("cta")}
             </Link>
           ) : (
-            <LoginLink className="bg-[var(--color-accent)] text-white px-6 py-3 rounded-lg text-lg hover:opacity-90">
+            <LoginLink className="bg-[var(--color-accent)] text-white px-6 py-3 rounded text-lg hover:opacity-90">
               {t("cta")}
             </LoginLink>
           )}
@@ -86,7 +86,7 @@ export default async function Home() {
                   alt={feature.imageAlt}
                   width={400}
                   height={300}
-                  className="rounded-lg shadow-lg"
+                  className="rounded shadow-lg"
                 />
               </div>
               <div className="w-full sm:w-1/2">

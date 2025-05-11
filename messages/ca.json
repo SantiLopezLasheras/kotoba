@@ -23,9 +23,15 @@
   },
   "Profile": {
     "email": "Correu electrònic",
+    "welcome": "Benvingut",
     "userId": "ID d'usuari",
-    "manageAccount": "Gestiona el compte",
-    "noName": "Usuari anònim"
+    "editProfile": "Editar perfil",
+    "name": "Nom",
+    "saving": "Guardant...",
+    "saveChanges": "Desa els canvis",
+    "yourLearningStats": "Les teves estadístiques d'aprenentatge",
+    "listsPerLanguage": "Llistes per idioma",
+    "flashcardsPerLanguage": "Targetes d'aprenentatge per idioma"
   },
   "Header": {
     "lists": "Llistes",

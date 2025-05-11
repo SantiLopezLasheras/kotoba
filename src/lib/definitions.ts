@@ -3,6 +3,7 @@ export type User = {
   email: string;
   createdAt: string;
   role: string;
+  name?: string | null;
 };
 
 export type Lista = {
