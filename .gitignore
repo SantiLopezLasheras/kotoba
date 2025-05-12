@@ -55,6 +55,3 @@ drizzle.config.ts
 /src/lib/animalesSeed.ts
 /src/lib/n5KanjiSeed.ts
 /src/lib/tiereSeed.ts
-
-# Sentry Config File
-.env.sentry-build-plugin

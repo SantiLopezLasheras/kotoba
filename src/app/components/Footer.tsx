@@ -6,7 +6,7 @@ export default function Footer() {
   const t = useTranslations("Footer");
 
   return (
-    <footer className="bg-bgSecondary text-textPrimary py-10 mt-16 border-t border-inactive">
+    <footer className="bg-bgSecondary text-textPrimary py-10 pt-16 border-t border-inactive">
       <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-8">
         <div className="flex items-center gap-4">
           <Image

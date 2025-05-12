@@ -20,18 +20,6 @@ export default async function ProfilePage() {
 
   if (!user) return redirect("/");
 
-  // function triggerError() {
-  //   Promise.resolve()
-  //     .then(() => {
-  //       throw new Error("Prueba de error para Sentry");
-  //     })
-  //     .catch((error) => {
-  //       throw error;
-  //     });
-  // }
-
-  // triggerError();
-
   const t = await getTranslations("Profile");
 
   const avatarUrl = getRandomAvatar();

@@ -4,7 +4,6 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { updateUserName } from "@/lib/dbqueries/stats/updateName";
 import { useTranslations } from "next-intl";
-import * as Sentry from "@sentry/nextjs";
 import toast from "react-hot-toast";
 
 export function EditNameForm({ initialName }: { initialName: string }) {
@@ -21,7 +20,7 @@ export function EditNameForm({ initialName }: { initialName: string }) {
         toast.success(t("nameUpdated"));
         router.refresh();
       } catch (error) {
-        Sentry.captureException(error);
+        void error;
         toast.error(t("nameUpdateFailed"));
       }
     });
