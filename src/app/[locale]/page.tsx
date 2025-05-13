@@ -11,7 +11,7 @@ export default async function Home() {
   const isUserAuthenticated = (await isAuthenticated()) ?? false;
 
   return (
-    <main className="bg-[var(--color-bgPrimary)] text-[var(--color-textPrimary)]">
+    <main className="bg-[var(--color-bgPrimary)]  text-[var(--color-textPrimary)]">
       <section className="flex flex-col lg:flex-row items-center justify-between py-16 px-8 max-w-screen-xl mx-auto">
         <div className="w-full lg:w-1/2 mb-8 lg:mb-0">
           <Image

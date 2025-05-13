@@ -1,11 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { Flashcard } from "@/lib/definitions";
 import { FlashcardList } from "./FlashcardList";
 import { FlashcardPreview } from "./FlashcardPreview";
-import { unfavoriteCard } from "./unfavoriteCardAction";
 import { Printer } from "lucide-react";
 import { printFlashcards } from "@/utils/printFlashcards";
 import Link from "next/link";
@@ -20,24 +18,13 @@ export function FlashcardFavoritesClient({
   const [searchQuery, setSearchQuery] = useState("");
   const [selected, setSelected] = useState<Flashcard | null>(null);
 
-  const router = useRouter();
-
-  const filtered = flashcards.filter((f) =>
-    f.palabra.toLowerCase().includes(searchQuery.toLowerCase())
+  const filtered = flashcards.filter((flashcard) =>
+    flashcard.palabra.toLowerCase().includes(searchQuery.toLowerCase())
   );
-
-  const handleUnfavorite = async (id: number) => {
-    try {
-      await unfavoriteCard(userId, id);
-      router.refresh();
-    } catch (err) {
-      console.error("Error al eliminar favorito:", err);
-    }
-  };
 
   return (
     <>
-      <div className="flex justify-end gap-4 px-8 py-5">
+      <div className="flex justify-end gap-4 px-8 py-5 ">
         <button
           onClick={() => printFlashcards(flashcards)}
           className="flex items-center gap-2 bg-orange-500 text-white px-4 py-2 rounded cursor-pointer hover:bg-orange-600"
@@ -66,7 +53,6 @@ export function FlashcardFavoritesClient({
             flashcards={filtered}
             userId={userId}
             onFlashcardSelect={setSelected}
-            onUnfavorite={handleUnfavorite}
           />
         </div>
 

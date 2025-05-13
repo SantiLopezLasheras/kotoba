@@ -79,14 +79,6 @@ export default function ListaModal({
     e.preventDefault();
     setLoading(true);
 
-    // Log the data you're sending to the server
-    console.log("Submitting data:", {
-      id,
-      nombre: name,
-      idioma: language,
-      nivel: level,
-    });
-
     try {
       const res = await fetch("/api/listas", {
         method: mode === "edit" ? "PUT" : "POST",
@@ -110,15 +102,14 @@ export default function ListaModal({
             : "Lista creada correctamente"
         );
       } else {
-        alert(
+        toast.error(
           mode === "edit"
             ? "Error al actualizar la lista"
             : "Error al crear la lista"
         );
       }
     } catch (error) {
-      console.error("Error:", error);
-      alert("Ha ocurrido un error.");
+      void error;
     } finally {
       setLoading(false);
     }

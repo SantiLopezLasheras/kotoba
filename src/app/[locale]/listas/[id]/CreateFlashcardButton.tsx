@@ -11,7 +11,7 @@ export const CreateFlashcardButton = ({ listaId }: { listaId: number }) => {
     <>
       <button
         onClick={() => setOpen(true)}
-        className="bg-[var(--color-accent)] text-white p-2 rounded-lg flex items-center gap-2 hover:bg-[var(--color-accent)]/90 cursor-pointer"
+        className="bg-[var(--color-accent)] text-white p-2 rounded cursor-pointer flex items-center gap-2 hover:bg-[var(--color-accent)]/90"
       >
         <Plus />
         <span>Crear tarjeta</span>

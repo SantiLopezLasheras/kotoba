@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 interface FlashcardModalProps {
   isOpen: boolean;
@@ -40,7 +41,7 @@ const FlashcardModal = ({
 
   const router = useRouter();
 
-  // Pre-fill values for edit mode using flashcard prop
+  // Se cargan los datos para el modo "edit"
   useEffect(() => {
     if (mode === "edit" && defaultValues) {
       setPalabra(defaultValues.palabra);
@@ -53,11 +54,24 @@ const FlashcardModal = ({
     }
   }, [mode, defaultValues]);
 
+  // Se limpia el formulario al cerrar el modal
+  useEffect(() => {
+    if (!isOpen) {
+      setPalabra("");
+      setTraduccion("");
+      setFraseEjemplo("");
+      setCategoriaGramatical("");
+      setNotas("");
+      setPronunciacion("");
+      setImage("");
+    }
+  }, [isOpen]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    // Prepare the data object with all the necessary fields
+    // Preparar los datos para enviar
     const data = {
       id,
       listaId,
@@ -84,17 +98,21 @@ const FlashcardModal = ({
 
       if (res.ok) {
         onClose();
+        toast.success(
+          mode === "edit"
+            ? "Tarjeta actualizada con éxito"
+            : "Tarjeta creada con éxito"
+        );
         router.refresh();
       } else {
-        alert(
+        toast.error(
           mode === "edit"
             ? "Error al actualizar la tarjeta"
             : "Error al crear la tarjeta"
         );
       }
     } catch (error) {
-      console.error("Error:", error);
-      alert("Ha ocurrido un error.");
+      void error;
     } finally {
       setLoading(false);
     }
@@ -235,7 +253,7 @@ const FlashcardModal = ({
 
             <button
               type="submit"
-              className="px-4 py-2 rounded bg-[var(--color-accent)] text-white"
+              className="px-4 py-2 rounded cursor-pointer bg-[var(--color-accent)] text-white"
               disabled={loading}
             >
               {loading
