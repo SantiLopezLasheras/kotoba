@@ -20,7 +20,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Kotoba",
+  title: "KOTOBA",
   description: "Flashcards to Fluency!",
 };
 
