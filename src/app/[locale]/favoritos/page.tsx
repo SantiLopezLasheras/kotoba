@@ -21,7 +21,7 @@ export default async function FavoritosPage() {
   return (
     <>
       <div className="flex justify-between items-center px-8 py-5">
-        <h1 className="text-3xl font-bold">t("myfavorites")</h1>
+        <h1 className="text-3xl font-bold">{t("myfavorites")}</h1>
       </div>
 
       <FlashcardFavoritesClient flashcards={flashcards} userId={dbUser.id} />
