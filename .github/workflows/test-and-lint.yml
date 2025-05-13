@@ -31,6 +31,10 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
+        env:
+          KINDE_ISSUER_URL: ${{ secrets.KINDE_ISSUER_URL }}
+          KINDE_CLIENT_ID: ${{ secrets.KINDE_CLIENT_ID }}
+          KINDE_CLIENT_SECRET: ${{ secrets.KINDE_CLIENT_SECRET }}
         run: npx playwright test
 
       - name: Upload Playwright report
