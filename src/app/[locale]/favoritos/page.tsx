@@ -2,13 +2,13 @@ import { getFavoriteFlashcardsByUserId } from "@/lib/dbqueries/getFavoriteByFlas
 import { getUserByEmail } from "@/lib/dbqueries/getUser";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { notFound } from "next/navigation";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 import { FlashcardFavoritesClient } from "./FlashcardFavoritesClient";
 
 export default async function FavoritosPage() {
   const { getUser } = getKindeServerSession();
-  const t = useTranslations("Favorites");
+  const t = await getTranslations("Favorites");
   const user = await getUser();
 
   if (!user?.email) return notFound();
