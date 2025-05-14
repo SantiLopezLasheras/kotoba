@@ -36,7 +36,11 @@
     "flashcardsPerLanguage": "Tarjetas de aprendizaje por idioma"
   },
   "Dashboard": {
-    "dashboardWelcome": "Bienvenido al Dashboard del Administrador"
+    "dashboardWelcome": "Benvingut al Dashboard d'Administració",
+    "lastUserJoined": "Último usuario registrado",
+    "generalStats": "Estadísticas generales",
+    "listsPerLanguage": "Listas por idioma",
+    "flashcardsPerLanguage": "Flashcards por idioma"
   },
   "Header": {
     "lists": "Listas",
@@ -86,7 +90,11 @@
     },
     "memory": {
       "title": "¡Encuentra la traducción correcta!",
-      "desc": "El clásico juego de memoria de buscar parejas, pero con palabras. Busca las palabras y sus traducciones."
+      "desc": "El clásico juego de memoria de buscar parejas, pero con palabras. Busca las palabras y sus traducciones.",
+      "easy": "Fácil",
+      "medium": "Medio",
+      "hard": "Difícil",
+      "playAgain": "Jugar de nuevo"
     },
     "dragdrop": {
       "title": "¡Ordena las frases!",

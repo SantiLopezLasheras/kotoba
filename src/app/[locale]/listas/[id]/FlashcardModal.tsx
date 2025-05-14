@@ -122,7 +122,7 @@ const FlashcardModal = ({
 
   return (
     <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
-      <div className="bg-[var(--color-bgPrimary)] text-[var(--color-textPrimary)] p-6 rounded-lg shadow-xl w-full max-w-3xl">
+      <div className="bg-[var(--color-bgPrimary)] text-[var(--color-textPrimary)] p-6 rounded shadow-xl w-full max-w-3xl bg-gradient-to-br from-[var(--color-bgSecondary)] via-[var(--color-blue)]/20 to-[var(--color-pink)]/30">
         <div className="flex justify-between items-center mb-4">
           <h3 className="text-xl font-semibold">
             {mode === "edit" ? "Editar tarjeta" : "Crear nueva tarjeta"}
@@ -246,7 +246,7 @@ const FlashcardModal = ({
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded bg-[var(--color-bgSecondary)] border border-[var(--color-inactive)]"
+              className="px-4 py-2 rounded cursor-pointer bg-[var(--color-bgSecondary)] border border-[var(--color-inactive)]"
             >
               Cancelar
             </button>

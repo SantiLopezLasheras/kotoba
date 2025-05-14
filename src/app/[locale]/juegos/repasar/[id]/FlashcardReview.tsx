@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Flashcard } from "@/lib/definitions";
-import Link from "next/link";
 import { AnimatePresence } from "framer-motion";
 import { FlashcardFront } from "./FlashcardFront";
 import { FlashcardBack } from "./FlashcardBack";
@@ -75,7 +74,7 @@ export function FlashcardReview({ flashcards, idioma }: FlashcardReviewProps) {
         </AnimatePresence>
       </div>
 
-      <div className="flex justify-center gap-4 mt-6">
+      <div className="flex justify-center gap-4 mt-12">
         <button
           onClick={() => handleReview("easy")}
           className="px-4 py-2 bg-green-600 text-white rounded cursor-pointer hover:bg-green-700 transition"
@@ -99,12 +98,6 @@ export function FlashcardReview({ flashcards, idioma }: FlashcardReviewProps) {
       <p className="text-center mt-4 text-sm text-gray-600">
         {currentIndex + 1} / {flashcards.length}
       </p>
-      <Link
-        href={`/listas`}
-        className="mt-4 block text-center text-[var(--color-blue)]"
-      >
-        Volver a las listas
-      </Link>
     </div>
   );
 }

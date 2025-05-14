@@ -49,7 +49,7 @@ export default function UserFlashcardsPerLanguageChart({ data }: Props) {
     plugins: {
       legend: { display: false },
       title: {
-        display: true,
+        display: false,
         text: "Flashcards per Language",
       },
     },

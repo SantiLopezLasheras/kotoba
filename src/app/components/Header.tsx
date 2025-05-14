@@ -30,18 +30,28 @@ export default function Header({
           height={80}
         />
       </Link>
-
-      <div className="flex space-x-4">
-        <Link href="/listas" className="text-accent hover:underline uppercase">
-          {t("lists")}
-        </Link>
-        <Link href="/juegos" className="text-accent hover:underline uppercase">
-          {t("games")}
-        </Link>
-        <Link href="/planes" className="text-accent hover:underline uppercase">
-          {t("plans")}
-        </Link>
-      </div>
+      {isUserAuthenticated && (
+        <div className="flex space-x-4">
+          <Link
+            href="/listas"
+            className="text-accent hover:underline uppercase"
+          >
+            {t("lists")}
+          </Link>
+          <Link
+            href="/juegos"
+            className="text-accent hover:underline uppercase"
+          >
+            {t("games")}
+          </Link>
+          <Link
+            href="/planes"
+            className="text-accent hover:underline uppercase"
+          >
+            {t("plans")}
+          </Link>
+        </div>
+      )}
 
       <div className="flex items-center space-x-4">
         {isUserAuthenticated && <UserMenu isAdmin={isAdmin} />}

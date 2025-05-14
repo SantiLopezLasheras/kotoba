@@ -5,9 +5,23 @@ import { getListaById } from "@/lib/dbqueries/getListaById";
 import { createLista } from "@/lib/dbqueries/createLista";
 import { updateLista } from "@/lib/dbqueries/updateLista";
 import { deleteLista } from "@/lib/dbqueries/deleteLista";
+import { newListaSchema } from "@/lib/zodSchemas";
+import { updateListaSchema } from "@/lib/zodSchemas";
 
 export async function POST(req: NextRequest) {
-  const { nombre, idioma, nivel } = await req.json();
+  // const { nombre, idioma, nivel } = await req.json();
+  const json = await req.json();
+
+  const result = newListaSchema.safeParse(json);
+
+  if (!result.success) {
+    return NextResponse.json(
+      { message: "Datos inválidos", errors: result.error.flatten() },
+      { status: 400 }
+    );
+  }
+
+  const { nombre, idioma, nivel, public: isPublic = false } = result.data;
 
   if (!nombre || !idioma || !nivel) {
     return NextResponse.json({ message: "Datos incompletos" }, { status: 400 });
@@ -37,7 +51,13 @@ export async function POST(req: NextRequest) {
   const userId = dbUser.id;
 
   try {
-    const newLista = await createLista({ nombre, idioma, nivel, userId });
+    const newLista = await createLista({
+      nombre,
+      idioma,
+      nivel,
+      public: isPublic,
+      userId,
+    });
     return NextResponse.json({ message: "Lista creada", lista: newLista });
   } catch (error) {
     console.error("Error al crear la lista:", error);
@@ -49,7 +69,21 @@ export async function POST(req: NextRequest) {
 }
 
 export async function PUT(req: NextRequest) {
-  const { id, nombre, idioma, nivel } = await req.json();
+  // const { id, nombre, idioma, nivel } = await req.json();
+
+  const json = await req.json();
+
+  // Validate the request body using Zod schema
+  const result = updateListaSchema.safeParse(json);
+
+  if (!result.success) {
+    return NextResponse.json(
+      { message: "Datos inválidos", errors: result.error.flatten() },
+      { status: 400 }
+    );
+  }
+
+  const { id, nombre, idioma, nivel } = result.data;
 
   if (!id || (!nombre && !idioma && !nivel)) {
     return NextResponse.json(
@@ -93,12 +127,18 @@ export async function PUT(req: NextRequest) {
     );
   }
 
+  const updatedFields: Partial<{
+    nombre: string;
+    idioma: string;
+    nivel: string;
+  }> = {};
+
+  if (nombre) updatedFields.nombre = nombre;
+  if (idioma) updatedFields.idioma = idioma;
+  if (nivel) updatedFields.nivel = nivel;
+
   try {
-    const listaActualizada = await updateLista(Number(id), {
-      nombre,
-      idioma,
-      nivel,
-    });
+    const listaActualizada = await updateLista(Number(id), updatedFields);
     return NextResponse.json({
       message: "Lista actualizada correctamente",
       lista: listaActualizada,

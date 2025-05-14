@@ -3,6 +3,7 @@ import { Flashcard } from "@/lib/definitions";
 
 export const printFlashcards = (flashcards: Flashcard[]) => {
   const doc = new jsPDF();
+  doc.setFont("Courier");
 
   // Layout
   const layout = {
@@ -110,7 +111,7 @@ export const printFlashcards = (flashcards: Flashcard[]) => {
           flashcard.traduccion.toUpperCase(),
           maxTextWidth
         );
-        doc.setFontSize(14);
+        doc.setFontSize(10);
         doc.setFont("Courier", "bold");
         translationLines.forEach((line: string) => {
           doc.text(line, x + cardWidth / 2, currentY, { align: "center" });
@@ -125,7 +126,8 @@ export const printFlashcards = (flashcards: Flashcard[]) => {
           flashcard.fraseEjemplo,
           maxTextWidth
         );
-        doc.setFontSize(11);
+        console.log("Example Lines:", exampleLines);
+        doc.setFontSize(14);
         doc.setFont("Courier", "bolditalic");
         exampleLines.forEach((line: string) => {
           doc.text(line, startX, currentY);

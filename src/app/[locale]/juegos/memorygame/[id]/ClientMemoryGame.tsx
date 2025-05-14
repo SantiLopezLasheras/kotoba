@@ -32,7 +32,7 @@ export default function ClientMemoryGame({
     "medium"
   );
 
-  // Set the MAX_PAIRS based on selected difficulty
+  // Selecciona el número máximo de pares según la dificultad
   const MAX_PAIRS =
     difficulty === "easy" ? 5 : difficulty === "medium" ? 10 : 15;
 
@@ -157,40 +157,28 @@ export default function ClientMemoryGame({
   };
 
   return (
-    <div className="flex flex-col items-center justify-center py-10 px-4 w-full">
+    <div className="min-h-screen flex flex-col items-center justify-start py-10 px-4 w-full bg-gradient-to-r from-[var(--color-blue)] to-[var(--color-accent)]">
       <h1 className="text-3xl font-bold mb-6 text-center">{title}</h1>
 
-      {/* Difficulty Selection */}
+      {/* Selección de dificultad */}
       <div className="mb-6">
         <button
           onClick={() => setDifficulty("easy")}
-          className={`px-4 py-2 rounded cursor-pointer mr-2 transition-all duration-300 ${
-            difficulty === "easy"
-              ? "bg-accent text-white"
-              : "bg-white dark:bg-accent text-textPrimary dark:text-white"
-          }`}
+          className="px-4 py-2 rounded cursor-pointer mr-2 transition-all duration-300 uppercase bg-green-500"
         >
-          Easy
+          Fácil
         </button>
         <button
           onClick={() => setDifficulty("medium")}
-          className={`px-4 py-2 rounded cursor-pointer mr-2 transition-all duration-300 ${
-            difficulty === "medium"
-              ? "bg-accent text-white"
-              : "bg-white dark:bg-accent text-textPrimary dark:text-white"
-          }`}
+          className="px-4 py-2 rounded cursor-pointer mr-2 transition-all duration-300 uppercase bg-yellow-500"
         >
-          Medium
+          Normal
         </button>
         <button
           onClick={() => setDifficulty("hard")}
-          className={`px-4 py-2 rounded cursor-pointer transition-all duration-300 ${
-            difficulty === "hard"
-              ? "bg-accent text-white"
-              : "bg-white dark:bg-accent text-textPrimary dark:text-white"
-          }`}
+          className="px-4 py-2 rounded cursor-pointer transition-all duration-300 uppercase bg-red-500 text-white"
         >
-          Hard
+          Díficil
         </button>
       </div>
 
@@ -201,7 +189,7 @@ export default function ClientMemoryGame({
             onClick={() => window.location.reload()}
             className="mt-4 px-6 py-2 bg-accent text-white rounded cursor-pointer hover:bg-orange-600 transition-all"
           >
-            Play Again
+            Jugar otra vez
           </button>
         </div>
       )}

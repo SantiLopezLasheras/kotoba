@@ -16,37 +16,42 @@ export default async function RepasarPage(props: {
   const listas = await getListas({ visibility, userId: user?.id });
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-start py-10">
-      <h1 className="text-4xl font-bold mb-10 text-center">Repasar Game</h1>
-
-      <GameFilterBar current={visibility as "all" | "mine" | "public"} />
-
-      <div className="flex w-full max-w-screen-lg">
-        <div className="w-1/4 flex justify-center items-start">
-          <Image
-            src="/images/playinggames.svg"
-            alt="Repasar Game"
-            width={300}
-            height={300}
-            className="rounded-lg shadow-md"
-          />
+    <div className="min-h-screen flex flex-col items-center justify-start py-10 bg-gradient-to-r from-[var(--color-blue)] to-[var(--color-accent)]">
+      <div className="max-w-screen-xl mx-auto w-full space-y-10 px-6">
+        <div className="w-full flex flex-col lg:flex-row justify-between items-center gap-4 lg:gap-0 px-6">
+          <h1 className="text-4xl font-bold text-center lg:text-left">
+            Repasar
+          </h1>
+          <GameFilterBar current={visibility as "all" | "mine" | "public"} />
         </div>
 
-        <div className="w-3/4 p-6 flex flex-col justify-start items-center">
-          <h2 className="text-xl font-semibold mb-4">
-            Choose a list to review:
-          </h2>
+        <div className="w-full flex flex-col lg:flex-row justify-between items-start gap-10 lg:gap-20 px-6">
+          <div className="hidden lg:flex justify-start items-start w-full lg:w-1/2">
+            <Image
+              src="/images/playinggames.svg"
+              alt="Repasar Game"
+              width={400}
+              height={400}
+              className="rounded shadow-lg"
+            />
+          </div>
 
-          <div className="w-full flex flex-col items-center space-y-4">
-            {listas.map((list) => (
-              <Link
-                key={list.id}
-                href={`/juegos/repasar/${list.id}`}
-                className="w-2/3 text-center px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-all"
-              >
-                {list.nombre || "Unnamed List"}
-              </Link>
-            ))}
+          <div className="w-full lg:w-1/2 flex flex-col justify-end items-center">
+            <h2 className="text-xl font-semibold mb-4 text-center">
+              Choose a list to test your memory:
+            </h2>
+
+            <div className="w-full flex flex-col items-center space-y-4">
+              {listas.map((list) => (
+                <Link
+                  key={list.id}
+                  href={`/juegos/repasar/${list.id}`}
+                  className="w-full max-w-md text-center px-6 py-3 bg-blue-500 text-white rounded hover:bg-blue-500/80 transition-all shadow-md"
+                >
+                  {list.nombre || "Unnamed List"}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>

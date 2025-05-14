@@ -36,7 +36,11 @@
     "flashcardsPerLanguage": "Flashcards per Language"
   },
   "Dashboard": {
-    "dashboardWelcome": "Welcome to the Admin Dashboard"
+    "dashboardWelcome": "Welcome to the Admin Dashboard",
+    "lastUserJoined": "Last User Joined",
+    "flashcardsPerLanguage": "Flashcards per Language",
+    "listsPerLanguage": "Lists per Language",
+    "generalStats": "General Stats"
   },
   "Header": {
     "lists": "Lists",
@@ -86,7 +90,11 @@
     },
     "memory": {
       "title": "Find the correct translation!",
-      "desc": "Classic memory match, but with vocabulary! Match the word with its translation."
+      "desc": "Classic memory match, but with vocabulary! Match the word with its translation.",
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard",
+      "playAgain": "Play Again"
     },
     "dragdrop": {
       "title": "Put the sentence in order!",

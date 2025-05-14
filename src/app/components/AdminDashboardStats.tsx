@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { Bar, Pie } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -27,7 +28,9 @@ type Props = {
   totalLists: number;
   totalLanguages: number;
   totalFlashcards: number;
-  lastUserJoined: string; // ISO string of last user joined date
+  lastUserJoined: string;
+  listsPerLanguage: { language: string; count: number }[];
+  flashcardsPerLanguage: { language: string; count: number }[];
 };
 
 export default function AdminDashboardStats({
@@ -36,8 +39,9 @@ export default function AdminDashboardStats({
   totalLanguages,
   totalFlashcards,
   lastUserJoined,
+  listsPerLanguage,
+  flashcardsPerLanguage,
 }: Props) {
-  // Data for Admin Dashboard (Total Users, Lists, Languages, Flashcards)
   const data = {
     labels: ["Users", "Lists", "Languages", "Flashcards"],
     datasets: [
@@ -45,62 +49,99 @@ export default function AdminDashboardStats({
         label: "Count",
         data: [totalUsers, totalLists, totalLanguages, totalFlashcards],
         backgroundColor: ["#3b82f6", "#10b981", "#f59e0b", "#ef4444"],
-        barThickness: 50,
       },
     ],
   };
+
+  const t = useTranslations("Dashboard");
 
   const options = {
     responsive: true,
     plugins: {
       legend: { display: false },
-      title: {
-        display: false,
-        text: "Admin Dashboard Stats",
-      },
+      title: { display: false },
     },
   };
 
-  // Pie Chart for Languages Distribution
-  const languageData = {
-    labels: ["English", "Spanish", "French"], // This should be dynamic based on languages in the DB
+  const listsPerLanguageData = {
+    labels: listsPerLanguage.map((item) => item.language),
     datasets: [
       {
-        label: "Languages",
-        data: [5, 12, 8], // Example data, replace with dynamic data
-        backgroundColor: ["#ff6384", "#36a2eb", "#ffcd56"],
+        label: "Lists per Language",
+        data: listsPerLanguage.map((item) => item.count),
+        backgroundColor: listsPerLanguage.map(
+          (_, index) => `hsl(${(index * 60) % 360}, 70%, 60%)`
+        ),
       },
     ],
   };
 
-  // Format Last User Joined Date
+  const flashcardsPerLanguageData = {
+    labels: flashcardsPerLanguage.map((item) => item.language),
+    datasets: [
+      {
+        label: "Flashcards per Language",
+        data: flashcardsPerLanguage.map((item) => item.count),
+        backgroundColor: flashcardsPerLanguage.map(
+          (_, index) => `hsl(${(index * 120) % 360}, 70%, 60%)`
+        ),
+      },
+    ],
+  };
+
   const formattedLastUserJoined = new Date(lastUserJoined).toLocaleDateString();
 
   return (
-    <div className="charts-container space-y-10">
-      {/* Total Stats Bar Chart */}
-      <h3 className="text-lg font-medium mb-4 text-gray-700 dark:text-gray-200">
-        Admin Dashboard Stats
-      </h3>
-      <div style={{ height: "300px" }}>
-        <Bar options={options} data={data} />
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className=" bg-white dark:bg-gray-800 rounded shadow p-6">
+        <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">
+          {t("lastUserJoined")}
+        </h3>
+        <p className="text-gray-600 dark:text-gray-300">
+          {formattedLastUserJoined}
+        </p>
       </div>
 
-      {/* Total Idiomas */}
-      <h3 className="text-lg font-medium mb-4 text-gray-700 dark:text-gray-200">
-        Languages Distribution
-      </h3>
-      <div style={{ height: "300px" }}>
-        <Pie data={languageData} />
+      <div className="bg-white dark:bg-gray-800 rounded shadow p-6">
+        <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
+          {t("generalStats")}
+        </h3>
+        <div className="aspect-square">
+          <Pie data={data} options={options} />
+        </div>
       </div>
 
-      {/* Fecha de último registro */}
-      <h3 className="text-lg font-medium mb-2 text-gray-700 dark:text-gray-200">
-        Last User Joined
-      </h3>
-      <p className="text-gray-600 dark:text-gray-300">
-        {formattedLastUserJoined}
-      </p>
+      <div className="bg-white dark:bg-gray-800 rounded shadow p-6">
+        <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
+          {t("listsPerLanguage")}
+        </h3>
+        <div className="h-[300px]">
+          <Bar
+            options={{
+              responsive: true,
+              indexAxis: "y",
+              plugins: { legend: { display: false } },
+            }}
+            data={listsPerLanguageData}
+          />
+        </div>
+      </div>
+
+      <div className="bg-white dark:bg-gray-800 rounded shadow p-6">
+        <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
+          {t("flashcardsPerLanguage")}
+        </h3>
+        <div className="h-[300px]">
+          <Bar
+            options={{
+              responsive: true,
+              indexAxis: "y",
+              plugins: { legend: { display: false } },
+            }}
+            data={flashcardsPerLanguageData}
+          />
+        </div>
+      </div>
     </div>
   );
 }

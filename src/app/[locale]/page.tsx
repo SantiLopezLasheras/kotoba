@@ -1,8 +1,8 @@
-import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Link from "next/link";
 import { LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { getTranslations } from "next-intl/server";
 
 export default async function Home() {
   const t = await getTranslations("Home");
@@ -51,7 +51,6 @@ export default async function Home() {
           {t("discover")}
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-12">
-          {/* Feature */}
           {[
             {
               key: "feature1",
@@ -78,15 +77,15 @@ export default async function Home() {
               key={feature.key}
               className={`flex flex-col ${
                 index % 2 === 1 ? "sm:flex-row-reverse" : "sm:flex-row"
-              } items-center`}
+              } items-center text-center sm:text-left`}
             >
-              <div className="w-full sm:w-1/2 mb-4 sm:mb-0 sm:px-4">
+              <div className="w-3/4 sm:w-1/2 mb-4 sm:mb-0 sm:px-4 mx-auto">
                 <Image
                   src={feature.imageSrc}
                   alt={feature.imageAlt}
                   width={400}
                   height={300}
-                  className="rounded shadow-lg"
+                  className="rounded shadow-lg w-full h-auto"
                 />
               </div>
               <div className="w-full sm:w-1/2">

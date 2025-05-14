@@ -11,9 +11,11 @@ import Link from "next/link";
 export function FlashcardFavoritesClient({
   flashcards,
   userId,
+  isPremium,
 }: {
   flashcards: Flashcard[];
   userId: string;
+  isPremium: boolean;
 }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [selected, setSelected] = useState<Flashcard | null>(null);
@@ -25,13 +27,15 @@ export function FlashcardFavoritesClient({
   return (
     <>
       <div className="flex justify-end gap-4 px-8 py-5 ">
-        <button
-          onClick={() => printFlashcards(flashcards)}
-          className="flex items-center gap-2 bg-orange-500 text-white px-4 py-2 rounded cursor-pointer hover:bg-orange-600"
-        >
-          <Printer size={18} />
-          Imprimir Flashcards
-        </button>
+        {isPremium && (
+          <button
+            onClick={() => printFlashcards(flashcards)}
+            className="flex items-center gap-2 bg-orange-500 text-white px-4 py-2 rounded cursor-pointer hover:bg-orange-600"
+          >
+            <Printer size={18} />
+            Imprimir Flashcards
+          </button>
+        )}
 
         <Link
           href="/listas"

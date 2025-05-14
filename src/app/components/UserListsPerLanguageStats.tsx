@@ -42,7 +42,7 @@ export default function UserListsPerLanguageChart({ data }: Props) {
     plugins: {
       legend: { position: "right" as const },
       title: {
-        display: true,
+        display: false,
         text: "Lists per Language",
       },
     },

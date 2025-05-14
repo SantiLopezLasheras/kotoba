@@ -25,13 +25,15 @@ export default async function Listas(props: {
 
   return (
     <>
-      <h1 className="text-center text-3xl p-5 text-[var(--color-textPrimary)] dark:text-white ">
-        Listas
-      </h1>
+      <div className="flex justify-between items-center px-8 py-5">
+        <h1 className="text-center text-3xl  text-[var(--color-textPrimary)] dark:text-white ">
+          Listas
+        </h1>
 
-      <div className="flex justify-end items-center mb-4 px-8 gap-2 ">
-        <CreateButton />
-        <FilterBar current={visibility} />
+        <div className="flex justify-end items-center gap-4 ">
+          <CreateButton />
+          <FilterBar current={visibility} />
+        </div>
       </div>
 
       <div
@@ -41,7 +43,7 @@ export default async function Listas(props: {
         {listas.map((lista) => (
           <div
             key={lista.id}
-            className="w-full max-w-sm bg-[var(--color-bgSecondary)] dark:bg-[var(--color-bgPrimary)] rounded-xs border border-[var(--color-accent)] shadow-md p-4 "
+            className="w-full max-w-sm bg-[var(--color-bgSecondary)] dark:bg-[var(--color-bgPrimary)] rounded border border-[var(--color-blue)]/20 shadow-md p-4 hover:shadow-lg transition duration-300 bg-gradient-to-br from-[var(--color-bgSecondary)] via-[var(--color-blue)]/20 to-[var(--color-pink)]/30"
           >
             <div className="flex flex-col justify-center items-center text-[var(--color-textPrimary)] dark:text-white">
               <h3 className="text-2xl font-bold mb-2 text-center text-[var(--color-accent)] dark:text-[var(--color-accent)]">

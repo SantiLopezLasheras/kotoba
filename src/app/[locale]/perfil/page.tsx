@@ -41,74 +41,72 @@ export default async function ProfilePage() {
   ]);
 
   return (
-    <main className="min-h-screen bg-bgPrimary py-16 px-4">
-      <div className="max-w-7xl mx-auto px-4 lg:px-8">
-        <div className="bg-white dark:bg-gray-900 shadow-lg rounded-lg p-8">
-          <section className="flex flex-col lg:flex-row gap-10 mb-12">
-            {/* Información del Usuario */}
-            <div className="flex-1 text-center lg:text-left">
-              <div className="w-32 h-32 mx-auto lg:mx-0 mb-6 relative rounded-full overflow-hidden border-4 border-accent">
-                <Image
-                  src={avatarUrl}
-                  alt="Profile picture"
-                  fill
-                  className="object-cover"
-                  sizes="128px"
-                  priority
-                />
-              </div>
-
-              <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-2">
-                {t("welcome")} {name ?? ""}
-              </h1>
-
-              <p className="text-gray-600 dark:text-gray-300 mb-2">
-                {t("email")}: <span className="font-medium">{user.email}</span>
-              </p>
+    <main className="min-h-screen w-full bg-bgPrimary">
+      <div className="bg-white dark:bg-gray-600 shadow-lg rounded p-8">
+        <section className="flex flex-col lg:flex-row gap-10 mb-12">
+          {/* Información del Usuario */}
+          <div className="flex-1 text-center lg:text-left">
+            <div className="w-32 h-32 mx-auto lg:mx-0 mb-6 relative rounded-full overflow-hidden border-4 border-accent">
+              <Image
+                src={avatarUrl}
+                alt="Profile picture"
+                fill
+                className="object-cover"
+                sizes="128px"
+                priority
+              />
             </div>
 
-            {/* Formulario */}
-            <div className="flex-1">
-              <h3 className="text-xl font-semibold text-gray-700 dark:text-white mb-4">
-                {t("editProfile")}
-              </h3>
-              <EditNameForm initialName={name} />
-            </div>
-          </section>
+            <h1 className="text-3xl font-bold text-gray-800 dark:text-white mb-8">
+              {t("welcome")} {name ?? ""}
+            </h1>
 
-          {/* Línea horizontal para crear una separación visual */}
-          <div className="border-t-2 border-accent mb-8 w-full"></div>
+            <p className="text-gray-600 dark:text-gray-300 mb-2">
+              {t("email")}: <span className="font-medium">{user.email}</span>
+            </p>
+          </div>
 
-          {/* Estadísticas */}
-          <section className="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-10">
-            <div className="mb-8">
-              <h3 className="text-lg font-medium mb-8 text-gray-700 dark:text-gray-200">
-                {t("yourLearningStats")}
-              </h3>
-              <div className="w-full mx-auto">
-                <UserStatsChart
-                  flashcards={numFlashcards ?? 0}
-                  languages={numLanguages ?? 0}
-                  lists={numLists ?? 0}
-                />
-              </div>
-            </div>
+          {/* Formulario */}
+          <div className="flex-1">
+            <h3 className="text-xl font-semibold text-gray-700 dark:text-white mb-4">
+              {t("editProfile")}
+            </h3>
+            <EditNameForm initialName={name} />
+          </div>
+        </section>
 
-            <div className="lg:col-span-1">
-              <h3 className="text-lg font-medium mb-2 text-gray-700 dark:text-gray-200">
-                {t("listsPerLanguage")}
-              </h3>
-              <UserListsPerLanguageChart data={listsPerLang ?? []} />
-            </div>
+        {/* Línea horizontal para crear una separación visual */}
+        <div className="border-t-2 border-accent mb-8 w-full"></div>
 
-            <div className="lg:col-span-1">
-              <h3 className="text-lg font-medium mb-2 text-gray-700 dark:text-gray-200">
-                {t("flashcardsPerLanguage")}
-              </h3>
-              <UserFlashcardsPerLanguageChart data={flashcardsPerLang ?? []} />
+        {/* Estadísticas */}
+        <section className="space-y-10 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-10">
+          <div className="mb-8 p-8 rounded bg-gradient-to-br from-[var(--color-bgSecondary)] via-[var(--color-blue)]/20 to-[var(--color-pink)]/30">
+            <h3 className="text-lg font-medium mb-8 text-gray-700 dark:text-gray-200">
+              {t("yourLearningStats")}
+            </h3>
+            <div className="w-full mx-auto">
+              <UserStatsChart
+                flashcards={numFlashcards ?? 0}
+                languages={numLanguages ?? 0}
+                lists={numLists ?? 0}
+              />
             </div>
-          </section>
-        </div>
+          </div>
+
+          <div className="mb-8 p-8 rounded bg-gradient-to-br from-[var(--color-bgSecondary)] via-[var(--color-blue)]/20 to-[var(--color-pink)]/30">
+            <h3 className="text-lg font-medium mb-8 text-gray-700 dark:text-gray-200">
+              {t("listsPerLanguage")}
+            </h3>
+            <UserListsPerLanguageChart data={listsPerLang ?? []} />
+          </div>
+
+          <div className="mb-8 p-8 rounded bg-gradient-to-br from-[var(--color-bgSecondary)] via-[var(--color-blue)]/20 to-[var(--color-pink)]/30">
+            <h3 className="text-lg font-medium mb-8 text-gray-700 dark:text-gray-200">
+              {t("flashcardsPerLanguage")}
+            </h3>
+            <UserFlashcardsPerLanguageChart data={flashcardsPerLang ?? []} />
+          </div>
+        </section>
       </div>
     </main>
   );

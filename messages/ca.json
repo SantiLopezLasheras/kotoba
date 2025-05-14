@@ -36,7 +36,11 @@
     "flashcardsPerLanguage": "Targetes d'aprenentatge per idioma"
   },
   "Dashboard": {
-    "dashboardWelcome": "Benvingut al Dashboard d'Administració"
+    "dashboardWelcome": "Benvingut al Dashboard d'Administració",
+    "lastUserJoined": "Últim usuari registrat",
+    "generalStats": "Estadístiques generals",
+    "listsPerLanguage": "Llistes per idioma",
+    "flashcardsPerLanguage": "Flashcards per idioma"
   },
   "Header": {
     "lists": "Llistes",
@@ -86,7 +90,11 @@
     },
     "memory": {
       "title": "Troba la traducció correcta!",
-      "desc": "El joc de memòria clàssic, però amb paraules! Relaciona cada paraula amb la seva traducció."
+      "desc": "El joc de memòria clàssic, però amb paraules! Relaciona cada paraula amb la seva traducció.",
+      "easy": "Fàcil",
+      "medium": "Normal",
+      "hard": "Difícil",
+      "playAgain": "Torna a jugar"
     },
     "dragdrop": {
       "title": "Ordena les frases!",

@@ -3,10 +3,10 @@ import Link from "next/link";
 
 export default function PlanesPage() {
   return (
-    <div className="min-h-screen bg-[var(--color-bgPrimary)] text-[var(--color-textPrimary)] py-16 px-4">
+    <div className="min-h-screen bg-[var(--color-bgPrimary)] text-[var(--color-textPrimary)] py-16 px-4 bg-gradient-to-r from-[var(--color-blue)] to-[var(--color-accent)]">
       <div className="max-w-5xl mx-auto text-center mb-12">
         <h1 className="text-4xl font-bold mb-4">Elige tu plan</h1>
-        <p className="text-[var(--color-inactive)] text-lg">
+        <p className="text-lg">
           Empieza gratis y mejora tu aprendizaje con el plan premium.
         </p>
       </div>

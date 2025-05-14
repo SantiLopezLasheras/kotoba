@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 type Sentence = {
   id: number;
@@ -101,10 +102,18 @@ export default function ClientDragDrop({
   };
 
   return (
-    <div className="container mt-10 mx-auto p-6 text-gray-800 dark:text-white min-h-[500px] flex flex-col">
-      <h1 className="text-center text-3xl font-bold mb-6 text-[var(--color-textPrimary)]">
-        ¡Ordena la frase!
-      </h1>
+    <div className="container  mx-auto p-6 text-gray-800 dark:text-white min-h-[500px] flex flex-col bg-gradient-to-r from-[var(--color-blue)] to-[var(--color-accent)]">
+      <div className="flex justify-between items-center px-8 py-5 mb-6">
+        <h1 className="text-center text-3xl  text-[var(--color-textPrimary)] dark:text-white ">
+          ¡Ordena la frase!
+        </h1>
+        <Link
+          href={`/listas`}
+          className="bg-[var(--color-blue)] text-white py-2 px-4 rounded hover:bg-[var(--color-blue)]/80 transition"
+        >
+          Volver a listas
+        </Link>
+      </div>
 
       <div className="flex justify-center space-x-6 mb-6">
         <div className="w-[500px] bg-[var(--color-bgPrimary)] dark:bg-[var(--color-bgSecondary)] p-6 rounded-lg shadow-lg">

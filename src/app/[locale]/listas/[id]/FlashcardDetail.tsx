@@ -11,7 +11,7 @@ type Props = {
 
 export const FlashcardDetail: React.FC<Props> = ({ flashcard, language }) => {
   return (
-    <div className="relative w-full max-w-sm min-h-[320px] rounded-xl shadow-md p-4 hover:shadow-lg transition duration-300 text-[var(--color-textPrimary)] bg-gradient-to-br from-[var(--color-bgSecondary)] via-[var(--color-blue)]/10 to-[var(--color-pink)]/20 dark:bg-[var(--color-bgPrimary)] dark:text-[var(--color-textPrimary)]">
+    <div className="relative w-full max-w-sm min-h-[320px] rounded border border-[var(--color-blue)]/20 shadow-md p-4 hover:shadow-lg transition duration-300 text-[var(--color-textPrimary)] bg-gradient-to-br from-[var(--color-bgSecondary)] via-[var(--color-blue)]/20 to-[var(--color-pink)]/30 dark:bg-[var(--color-bgPrimary)] dark:text-[var(--color-textPrimary)]">
       <div className="flex flex-col justify-between h-full">
         <h3 className="text-2xl font-bold mb-4 text-center text-[var(--color-accent)]">
           {flashcard.palabra.toUpperCase()}

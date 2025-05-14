@@ -19,15 +19,11 @@ export default function NotFound() {
       </Head>
       <div className="px-2 w-full min-h-[520px] bg-gradient-to-br from-[var(--color-blue)] to-[var(--color-accent)]">
         <div className="mx-auto py-6 flex flex-col justify-center items-center gap-4">
-          <h2 className="text-2xl text-[var(--color-textPrimary)]">
-            {t("heading")}
-          </h2>
-          <h3 className="text-[var(--color-textSecondary)]">
-            {t("subheading")}
-          </h3>
+          <h2 className="text-2xl text-black">{t("heading")}</h2>
+          <h3 className="text-black">{t("subheading")}</h3>
           <Image
             className="mt-6 rounded-xl"
-            src="/images/not-found-1024x1024.png"
+            src="/images/notfound.png"
             width={300}
             height={300}
             sizes="300px"
