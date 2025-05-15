@@ -21,23 +21,13 @@ export default async function Juegos() {
           label={t("play")}
         />
 
-        {isPremium ? (
-          <GameCard
-            title={t("dragdrop.title")}
-            description={t("dragdrop.desc")}
-            image="/images/dragdrop.webp"
-            href="/juegos/dragdrop"
-            label={t("play")}
-          />
-        ) : (
-          <GameCard
-            title={t("dragdrop.title")}
-            description={t("dragdrop.desc")}
-            image="/images/dragdrop.webp"
-            href="/planes"
-            label={t("subscribe")}
-          />
-        )}
+        <GameCard
+          title={t("dragdrop.title")}
+          description={t("dragdrop.desc")}
+          image="/images/dragdrop.webp"
+          href="/juegos/dragdrop"
+          label={t("play")}
+        />
 
         <GameCard
           title={t("review.title")}
@@ -46,6 +36,23 @@ export default async function Juegos() {
           href="/juegos/repasar"
           label={t("review.label")}
         />
+        {isPremium ? (
+          <GameCard
+            title={t("interactive.title")}
+            description={t("interactive.desc")}
+            image="/images/dragdrop.webp"
+            href="/juegos/interactive-pictures"
+            label={t("play")}
+          />
+        ) : (
+          <GameCard
+            title={t("interactive.title")}
+            description={t("interactive.desc")}
+            image="/images/dragdrop.webp"
+            href="/planes"
+            label={t("subscribe")}
+          />
+        )}
       </div>
     </div>
   );

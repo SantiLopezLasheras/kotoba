@@ -1,0 +1,38 @@
+{
+  "sun": {
+    "translation": "sol",
+    "pronunciation": "sʌn",
+    "exampleSentence": "The sun sets behind the trees.",
+    "categoriaGramatical": "sustantivo"
+  },
+  "clouds": {
+    "translation": "nubes",
+    "pronunciation": "klaʊdz",
+    "exampleSentence": "Dark clouds gathered in the sky.",
+    "categoriaGramatical": "sustantivo"
+  },
+  "tree": {
+    "translation": "árbol",
+    "pronunciation": "triː",
+    "exampleSentence": "A bird is sitting in the tree.",
+    "categoriaGramatical": "sustantivo"
+  },
+  "bush": {
+    "translation": "arbusto",
+    "pronunciation": "bʊʃ",
+    "exampleSentence": "The cat hid behind the bush.",
+    "categoriaGramatical": "sustantivo"
+  },
+  "bench": {
+    "translation": "banco",
+    "pronunciation": "bentʃ",
+    "exampleSentence": "She sat on the bench to read her book.",
+    "categoriaGramatical": "sustantivo"
+  },
+  "grass": {
+    "translation": "césped",
+    "pronunciation": "ɡræs",
+    "exampleSentence": "The grass was wet with morning dew.",
+    "categoriaGramatical": "sustantivo"
+  }
+}

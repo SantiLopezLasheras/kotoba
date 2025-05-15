@@ -99,6 +99,10 @@
     "dragdrop": {
       "title": "Ordena les frases!",
       "desc": "Idiomes els Jo cada dia aprenent estic... Quin embolic! Fes que les frases tinguin sentit!"
+    },
+    "interactive": {
+      "title": "Imagens interactives",
+      "desc": "Fes click i apren paraules noves!"
     }
   },
   "Stripe": {

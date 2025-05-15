@@ -1,0 +1,32 @@
+{
+  "sun": {
+    "translation": "sol",
+    "pronunciation": "sʌn",
+    "exampleSentence": "The sun is shining brightly today.",
+    "categoriaGramatical": "sustantivo"
+  },
+  "clouds": {
+    "translation": "nubes",
+    "pronunciation": "klaʊdz",
+    "exampleSentence": "The clouds are covering the sky.",
+    "categoriaGramatical": "sustantivo"
+  },
+  "sea": {
+    "translation": "mar",
+    "pronunciation": "siː",
+    "exampleSentence": "They swam in the sea all afternoon.",
+    "categoriaGramatical": "sustantivo"
+  },
+  "sand": {
+    "translation": "arena",
+    "pronunciation": "sænd",
+    "exampleSentence": "The children played in the sand.",
+    "categoriaGramatical": "sustantivo"
+  },
+  "beach umbrella": {
+    "translation": "sombrilla",
+    "pronunciation": "ˈsʌn ʌmˌbrel.ə",
+    "exampleSentence": "We sat under the sun umbrella to stay cool.",
+    "categoriaGramatical": "sustantivo"
+  }
+}

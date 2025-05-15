@@ -99,6 +99,10 @@
     "dragdrop": {
       "title": "Put the sentence in order!",
       "desc": "I'm learning languages every day. Or... wait, how does that go again? Rearrange words to make sense!"
+    },
+    "interactive": {
+      "title": "Interactive Pictures",
+      "desc": "Click and learn new words!"
     }
   },
   "Stripe": {

@@ -1,0 +1,35 @@
+{
+  "door": {
+    "translation": "puerta",
+    "pronunciation": "dɔːr",
+    "exampleSentence": "Please close the door.",
+    "categoriaGramatical": "sustantivo"
+  },
+  "window": {
+    "en": "window",
+    "es": "ventana",
+    "de": "Fenster",
+    "translation": "ventana",
+    "pronunciation": "ˈwɪn.doʊ",
+    "exampleSentence": "She looked out the window.",
+    "categoriaGramatical": "sustantivo"
+  },
+  "roof": {
+    "en": "roof",
+    "es": "techo",
+    "de": "Dach",
+    "translation": "techo",
+    "pronunciation": "ruːf",
+    "exampleSentence": "The roof needs repairing.",
+    "categoriaGramatical": "sustantivo"
+  },
+  "chimney": {
+    "en": "chimney",
+    "es": "chimenea",
+    "de": "Kamin",
+    "translation": "chimenea",
+    "pronunciation": "ˈtʃɪm.ni",
+    "exampleSentence": "Smoke rose from the chimney.",
+    "categoriaGramatical": "sustantivo"
+  }
+}

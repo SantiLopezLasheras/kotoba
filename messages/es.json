@@ -99,6 +99,10 @@
     "dragdrop": {
       "title": "¡Ordena las frases!",
       "desc": "Idiomas los Yo todos días aprendiendo estoy. ¡Pero qué lío! Ni Yoda hablaba tan mal... Ordena las palabras."
+    },
+    "interactive": {
+      "title": "Imágenes interactivas",
+      "desc": "Haz click y aprende palabras nuevas"
     }
   },
   "Stripe": {
