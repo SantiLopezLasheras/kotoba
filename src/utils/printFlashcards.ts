@@ -3,7 +3,7 @@ import { Flashcard } from "@/lib/definitions";
 
 export const printFlashcards = (flashcards: Flashcard[]) => {
   const doc = new jsPDF();
-  doc.setFont("Courier");
+  doc.setFont("helvetica", "bold");
 
   // Layout
   const layout = {
@@ -24,7 +24,7 @@ export const printFlashcards = (flashcards: Flashcard[]) => {
     traduccionLineHeight: 6,
     fraseLineHeight: 5,
     notasLineHeight: 5,
-    betweenSections: 5,
+    betweenSections: 8,
     afterFrase: 3,
     afterNotas: 3,
   };
@@ -66,7 +66,7 @@ export const printFlashcards = (flashcards: Flashcard[]) => {
       const maxTextWidth = cardWidth - padding * 2;
 
       doc.setFontSize(24);
-      doc.setFont("Courier", "bold");
+      doc.setFont("helvetica", "bold");
 
       const palabraLines = doc.splitTextToSize(
         flashcard.palabra.toUpperCase(),
@@ -87,15 +87,16 @@ export const printFlashcards = (flashcards: Flashcard[]) => {
       doc.setLineWidth(0.4);
       doc.line(x + padding, lineY, x + cardWidth - padding, lineY);
 
-      // Categoría Gramatical
+      // Categoría Gramatical (bottom-right)
       if (flashcard.categoriaGramatical) {
         doc.setFontSize(8);
-        doc.setFont("Courier", "italic");
+        doc.setFont("helvetica", "italic");
+        doc.setTextColor("#555");
         doc.text(
           `(${flashcard.categoriaGramatical})`,
-          x + cardWidth / 2,
+          x + cardWidth - padding,
           lineY + 6,
-          { align: "center" }
+          { align: "right" }
         );
       }
     } else {
@@ -112,7 +113,7 @@ export const printFlashcards = (flashcards: Flashcard[]) => {
           maxTextWidth
         );
         doc.setFontSize(10);
-        doc.setFont("Courier", "bold");
+        doc.setFont("helvetica", "bold");
         translationLines.forEach((line: string) => {
           doc.text(line, x + cardWidth / 2, currentY, { align: "center" });
           currentY += spacing.traduccionLineHeight;
@@ -128,7 +129,7 @@ export const printFlashcards = (flashcards: Flashcard[]) => {
         );
         console.log("Example Lines:", exampleLines);
         doc.setFontSize(14);
-        doc.setFont("Courier", "bolditalic");
+        doc.setFont("helvetica", "bolditalic");
         exampleLines.forEach((line: string) => {
           doc.text(line, startX, currentY);
           currentY += spacing.fraseLineHeight;
@@ -143,7 +144,7 @@ export const printFlashcards = (flashcards: Flashcard[]) => {
           maxTextWidth
         );
         doc.setFontSize(10);
-        doc.setFont("Courier", "normal");
+        doc.setFont("helvetica", "normal");
         noteLines.forEach((line: string) => {
           doc.text(line, startX, currentY);
           currentY += spacing.notasLineHeight;
@@ -157,7 +158,6 @@ export const printFlashcards = (flashcards: Flashcard[]) => {
     const { marginTop, marginLeft, cardWidth, cardHeight, gap, cardsPerRow } =
       layout;
 
-    // Header
     const headerHeight = marginTop + 10;
     doc.setFontSize(16);
     doc.setTextColor(textColor);
@@ -168,29 +168,29 @@ export const printFlashcards = (flashcards: Flashcard[]) => {
 
     const yOffset = headerHeight;
 
-    // Cards
     for (let i = 0; i < cards.length; i++) {
       const row = Math.floor(i / cardsPerRow);
       const col = i % cardsPerRow;
-      const x = marginLeft + col * (cardWidth + gap);
+
+      // For backs: flip the horizontal order of cards to mirror front side
+      const x = isBack
+        ? marginLeft + (cardsPerRow - 1 - col) * (cardWidth + gap) // reverse horizontal order
+        : marginLeft + col * (cardWidth + gap);
       const y = yOffset + row * (cardHeight + gap);
+
       drawFlashcard(cards[i], x, y, isBack);
     }
   };
 
-  // FRONT PAGES
+  // Interleave front/back pages
   for (let i = 0; i < flashcards.length; i += layout.cardsPerPage) {
     const pageCards = flashcards.slice(i, i + layout.cardsPerPage);
-    renderPage(pageCards, false);
+    renderPage(pageCards, false); // Front page
+    doc.addPage();
+    renderPage(pageCards, true); // Back page (mirrored)
     if (i + layout.cardsPerPage < flashcards.length) doc.addPage();
   }
 
-  // BACK PAGES
-  for (let i = 0; i < flashcards.length; i += layout.cardsPerPage) {
-    doc.addPage();
-    const pageCards = flashcards.slice(i, i + layout.cardsPerPage);
-    renderPage(pageCards, true);
-  }
   // descarga el pdf directamente
   // doc.save("flashcards.pdf");
 
