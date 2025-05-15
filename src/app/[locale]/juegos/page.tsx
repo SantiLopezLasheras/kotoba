@@ -16,7 +16,7 @@ export default async function Juegos() {
         <GameCard
           title={t("memory.title")}
           description={t("memory.desc")}
-          image="/images/memorygame.png"
+          image="/images/memorygame.webp"
           href="/juegos/memorygame"
           label={t("play")}
         />
@@ -25,7 +25,7 @@ export default async function Juegos() {
           <GameCard
             title={t("dragdrop.title")}
             description={t("dragdrop.desc")}
-            image="/images/dragdrop.png"
+            image="/images/dragdrop.webp"
             href="/juegos/dragdrop"
             label={t("play")}
           />
@@ -33,7 +33,7 @@ export default async function Juegos() {
           <GameCard
             title={t("dragdrop.title")}
             description={t("dragdrop.desc")}
-            image="/images/dragdrop.png"
+            image="/images/dragdrop.webp"
             href="/planes"
             label={t("subscribe")}
           />
@@ -42,7 +42,7 @@ export default async function Juegos() {
         <GameCard
           title={t("review.title")}
           description={t("review.desc")}
-          image="/images/review.png"
+          image="/images/review.webp"
           href="/juegos/repasar"
           label={t("review.label")}
         />

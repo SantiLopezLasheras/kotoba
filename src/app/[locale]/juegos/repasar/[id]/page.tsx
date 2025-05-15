@@ -14,6 +14,8 @@ export default async function RepasarMazo({ params }: RepasarMazoProps) {
 
   const listaId = parseInt(id, 10);
 
+  if (isNaN(listaId)) return notFound();
+
   const flashcards = await getFlashcardsByListId(listaId);
   const lista = await getListaById(listaId);
 

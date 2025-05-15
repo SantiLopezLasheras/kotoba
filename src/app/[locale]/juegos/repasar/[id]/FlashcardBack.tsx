@@ -52,9 +52,9 @@ export function FlashcardBack({
           <Image
             width={200}
             height={200}
-            src="/images/interrogation.webp"
+            src="/images/questionmarks.webp"
             alt="interrogantes"
-            className="rounded-md"
+            className="rounded"
           />
         )}
       </motion.div>

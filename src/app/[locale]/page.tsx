@@ -15,7 +15,7 @@ export default async function Home() {
       <section className="flex flex-col lg:flex-row items-center justify-between py-16 px-8 max-w-screen-xl mx-auto">
         <div className="w-full lg:w-1/2 mb-8 lg:mb-0">
           <Image
-            src="/images/landing.png"
+            src="/images/landing.webp"
             alt="App Landing Image"
             width={500}
             height={500}

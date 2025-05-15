@@ -23,7 +23,7 @@ export default function NotFound() {
           <h3 className="text-black">{t("subheading")}</h3>
           <Image
             className="mt-6 rounded-xl"
-            src="/images/notfound.png"
+            src="/images/notfound.webp"
             width={300}
             height={300}
             sizes="300px"
