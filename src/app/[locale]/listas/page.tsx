@@ -6,6 +6,7 @@ import { CreateButton } from "./CreateButton";
 import { EditButton } from "./EditButton";
 import { FilterBar } from "./FilterBar";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { redirect } from "next/navigation";
 
 export default async function Listas(props: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -17,6 +18,8 @@ export default async function Listas(props: {
 
   const { getUser } = getKindeServerSession();
   const user = await getUser();
+
+  if (!user) redirect("/");
 
   const listas = await getListas({
     userId: user?.id,

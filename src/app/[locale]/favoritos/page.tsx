@@ -5,11 +5,14 @@ import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { FlashcardFavoritesClient } from "./FlashcardFavoritesClient";
 import { checkPremiumRole } from "@/lib/auth/checkPremium";
+import { redirect } from "next/navigation";
 
 export default async function FavoritosPage() {
   const { getUser } = getKindeServerSession();
   const t = await getTranslations("Favorites");
   const user = await getUser();
+
+  if (!user) redirect("/");
 
   if (!user?.email) return notFound();
   const dbUser = await getUserByEmail(user.email);

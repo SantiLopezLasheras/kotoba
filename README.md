@@ -1,7 +1,5 @@
 # KOTOBA
 
-(./public/images/logo.png)
-
 KOTOBA es una aplicación de aprendizaje de idiomas que permite a los usuarios
 rear listas y tarjetas de vocabulario, las cuales sirven como base para una
 variedad de juegos y actividades interactivas.

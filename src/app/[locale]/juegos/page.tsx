@@ -1,8 +1,15 @@
 import { getTranslations } from "next-intl/server";
 import GameCard from "./Gamecard";
 import { checkPremiumRole } from "@/lib/auth/checkPremium";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { redirect } from "next/navigation";
 
 export default async function Juegos() {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+
+  if (!user) redirect("/");
+
   const t = await getTranslations("Games");
   const isPremium = await checkPremiumRole();
 

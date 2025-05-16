@@ -7,6 +7,8 @@ import { CreateFlashcardButton } from "./CreateFlashcardButton";
 import { FlashcardDetail } from "./FlashcardDetail";
 import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
+import { redirect } from "next/navigation";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 interface TarjetasProps {
   params: Promise<{ id: string }>;
@@ -17,6 +19,11 @@ export default async function Tarjetas({
   params,
   searchParams,
 }: TarjetasProps) {
+  const { getUser } = getKindeServerSession();
+  const user = await getUser();
+
+  if (!user) redirect("/");
+
   const { id } = await params;
   const listaId = parseInt(id, 10);
 
