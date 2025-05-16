@@ -35,23 +35,31 @@ export default async function LocaleLayout({
 }>) {
   // comprobar si el usuario está autenticado
   const { isAuthenticated, getUser } = getKindeServerSession();
-  const isUserAuthenticated = (await isAuthenticated()) ?? false;
 
-  // comprobar si el usuario existe en la base de datos
-  const user = await getUser();
+  let isUserAuthenticated = false;
+  let user = null;
+  try {
+    isUserAuthenticated = (await isAuthenticated()) ?? false;
+    user = await getUser();
 
-  if (user) {
-    await comprobarUsuarioEnBD({
-      id: user.id,
-      email: user.email ?? undefined, // el email puede ser undefined
-    });
+    if (user) {
+      await comprobarUsuarioEnBD({
+        id: user.id,
+        email: user.email ?? undefined, // el email puede ser undefined
+      });
+    }
+  } catch (error) {
+    void error;
   }
 
-  // comprobar si el usuario es admin
-  const isAdmin = await checkAdminRole();
+  let isAdmin = false;
+  let isPremium = false;
 
-  // comprobar si el usuario es premium
-  const isPremium = await checkPremiumRole();
+  if (isUserAuthenticated) {
+    // comprobar si el usuario es admin
+    isAdmin = await checkAdminRole(); // comprobar si el usuario es premium
+    isPremium = await checkPremiumRole();
+  }
 
   // comprobar si el locale es válido
   const { locale } = await params;
