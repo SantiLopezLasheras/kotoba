@@ -40,14 +40,14 @@ export default async function Tarjetas({
 
     return (
       <>
-        <div className="flex justify-between items-center px-8 py-5">
-          <h1 className="text-center text-3xl text-[var(--color-textPrimary)] dark:text-white">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center px-4 sm:px-8 py-5">
+          <h1 className="text-3xl text-[var(--color-textPrimary)] dark:text-white text-center md:text-left mb-4 md:mb-0">
             Tarjetas
           </h1>
-          <div className="flex gap-4 items-center">
+          <div className="flex flex-col md:flex-row gap-4 items-center justify-center md:justify-end">
             <Link
               href={`/listas`}
-              className="bg-[var(--color-blue)] text-white py-2 px-6 rounded hover:bg-[var(--color-blue)]/80 transition duration-300 flex items-center"
+              className="bg-[var(--color-blue)] text-white py-2 px-6 rounded hover:bg-[var(--color-blue)]/80 transition duration-300 flex items-center justify-center"
             >
               <ArrowLeft className="w-5 h-5 mr-2" />
               Volver a listas

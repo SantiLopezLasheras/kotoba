@@ -11,6 +11,10 @@ export async function checkPremiumRole() {
 
   const userDB = await getUserByEmail(user.email);
 
+  if (!userDB) {
+    return false;
+  }
+
   if (userDB.role === "premium") {
     return true;
   }

@@ -34,8 +34,18 @@ export default async function LocaleLayout({
   }>;
 }>) {
   // comprobar si el usuario está autenticado
-  const { isAuthenticated } = getKindeServerSession();
+  const { isAuthenticated, getUser } = getKindeServerSession();
   const isUserAuthenticated = (await isAuthenticated()) ?? false;
+
+  // comprobar si el usuario existe en la base de datos
+  const user = await getUser();
+
+  if (user) {
+    await comprobarUsuarioEnBD({
+      id: user.id,
+      email: user.email ?? undefined, // el email puede ser undefined
+    });
+  }
 
   // comprobar si el usuario es admin
   const isAdmin = await checkAdminRole();
@@ -51,17 +61,6 @@ export default async function LocaleLayout({
 
   // cargar las traducciones
   const messages = (await import(`../../../messages/${locale}.json`)).default;
-
-  // comprobar si el usuario existe en la base de datos
-  const { getUser } = getKindeServerSession();
-  const user = await getUser();
-
-  if (user) {
-    await comprobarUsuarioEnBD({
-      id: user.id,
-      email: user.email ?? undefined, // el email puede ser undefined
-    });
-  }
 
   return (
     <html lang={locale} className={inter.className} suppressHydrationWarning>

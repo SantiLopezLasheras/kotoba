@@ -25,12 +25,12 @@ export default async function Listas(props: {
 
   return (
     <>
-      <div className="flex justify-between items-center px-8 py-5">
-        <h1 className="text-center text-3xl  text-[var(--color-textPrimary)] dark:text-white ">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center px-4 sm:px-8 py-5">
+        <h1 className="text-3xl text-[var(--color-textPrimary)] dark:text-white text-center md:text-left mb-4 md:mb-0">
           Listas
         </h1>
 
-        <div className="flex justify-end items-center gap-4 ">
+        <div className="flex justify-center md:justify-end items-center gap-4">
           <CreateButton />
           <FilterBar current={visibility} />
         </div>
